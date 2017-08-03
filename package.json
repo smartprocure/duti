@@ -1,0 +1,36 @@
+{
+  "name": "duti",
+  "description": "Danger UTIlities",
+  "private": true,
+  "bin": {
+    "duti": "bin/duti.js"
+  },
+  "version": "1.0.0",
+  "main": "src/dangerfile.js",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "test": "jest src",
+    "test:watch": "npm t -- --watch",
+    "test:ci": "npm t -- --coverage --json --outputFile=test-results.json",
+    "lint": "eslint src/**/*.js",
+    "lint:ci": "npm run lint -- -o lint-results.json -f json",
+    "danger": "danger",
+    "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma all"
+  },
+  "dependencies": {
+    "danger": "^1.1.0",
+    "pkg-up": "^2.0.0"
+  },
+  "ghooks": {
+    "pre-commit": "npm run fmt && npm run lint"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "ghooks": "^2.0.0",
+    "jest": "^20.0.4",
+    "prettier": "^1.5.3"
+  }
+}
