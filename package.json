@@ -24,12 +24,8 @@
     "danger": "^1.1.0",
     "pkg-up": "^2.0.0"
   },
-  "ghooks": {
-    "pre-commit": "npm run fmt && npm run lint"
-  },
   "devDependencies": {
     "eslint": "^4.3.0",
-    "ghooks": "^2.0.0",
     "jest": "^20.0.4",
     "prettier": "^1.5.3"
   }
