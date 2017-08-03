@@ -1,0 +1,11 @@
+node_modules
+coverage
+
+*.log
+*.log.*
+
+test.sh
+
+.DS_Store
+
+.vscode
