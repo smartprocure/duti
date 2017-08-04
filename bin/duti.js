@@ -3,7 +3,7 @@
 
 let { spawn } = require('child_process')
 let path = require('path')
-let duti = spawn('danger', [
+let duti = spawn(path.resolve(__dirname, '../node_modules/.bin/danger'), [
   'run',
   '--dangerfile',
   path.resolve(__dirname, '../src/dangerfile.js'),
