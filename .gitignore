@@ -3,6 +3,8 @@ coverage
 
 *.log
 *.log.*
+./test-results.json
+./lint-results.json
 
 test.sh
 
