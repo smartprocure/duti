@@ -12,7 +12,7 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "test": "jest src",
+    "test": "jest",
     "test:watch": "npm t -- --watch",
     "test:ci": "npm t -- --coverage --json --outputFile=test-results.json",
     "lint": "eslint src/**/*.js",
