@@ -5,34 +5,25 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-  install:
-    steps:
-      - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run: npm install
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install-npm-wee
+          command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
-  lint:
-    steps:
-      - run: npm run lint:ci
-  test:
-    steps:
-      - run: npm run test:ci
-  danger:
-    steps:
-      - run: npm run danger
-
-workflows:
-  version: 2
-  test:
-    jobs:
-      - install
-      - lint:
-          requires: [install]
-      - test:
-          requires: [lint]
-      - dagger:
-          requires: [test, lint]
+      - run:
+          name: lint
+          command: npm run lint:ci
+      - run:
+          name: test
+          command: npm run test:ci
+      - run:
+          name: danger
+          command: npm run danger
+      - store_lint_results:
+          path: lint-results.json
+      - store_test_results:
+          path: test-results.json
