@@ -1,7 +1,10 @@
 version: 2
-docker:
-  - image: node:latest
 jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
   install:
     steps:
       - checkout
