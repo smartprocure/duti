@@ -2,23 +2,18 @@ let _ = require('lodash/fp')
 let { log, fileNameFromPath } = require('../utils')
 
 let messageTemplate = message => `
-<li>
   <strong>${message.message}</strong>
-  <br />
   <code>Line ${message.line}: ${message.source.trim()}</code>
-</li>
 `
+let formatLintMessages = messages =>
+  _.flow(_.map(messageTemplate), _.join('\n'))(messages)
 
 let lintTemplate = (lint, severity) => `
 <details>
   <summary>${fileNameFromPath(lint.filePath)}</summary>
-  <ul>${formatLintMessages(
-    _.filter(m => m.severity === severity, lint.messages),
-  )}</ul>
+  <p>Full Path: <code>${lint.filePath}</code></p>
+  ${formatLintMessages(_.filter(m => m.severity === severity, lint.messages))}
 </details>`
-
-let formatLintMessages = messages =>
-  _.flow(_.map(messageTemplate), _.join('\n'))(messages)
 
 let formatLint = (lintRes, severity) =>
   _.flow(
@@ -28,7 +23,7 @@ let formatLint = (lintRes, severity) =>
         _.some(m => m.severity === severity, lint.messages),
     ),
     _.map(lint => lintTemplate(lint, severity)),
-    _.join('\n'),
+    _.join(''),
   )(lintRes)
 
 let hasLintErrors = ({ lintResults, fail }) => {
