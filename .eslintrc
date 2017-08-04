@@ -6,8 +6,5 @@
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module"
-  },
-  "rules": {
-    "no-plusplus": "warn"
   }
 }
