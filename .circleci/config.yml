@@ -3,23 +3,34 @@ jobs:
   build:
     docker:
       - image: node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: install
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-      - run:
-          name: lint
-          command: npm run lint:ci
-      - run:
-          name: test
-          command: npm run test:ci
-      - run:
-          name: danger
-          command: npm run danger
+    install:
+      steps:
+        - checkout
+        - restore_cache:
+            key: dependency-cache-{{ checksum "package.json" }}
+        - run: npm install
+        - save_cache:
+            key: dependency-cache-{{ checksum "package.json" }}
+            paths:
+              - ./node_modules
+    lint:
+      steps:
+        - run: npm run lint:ci
+    test:
+      steps:
+        - run: npm run test:ci
+    danger:
+      steps:
+        - run: npm run danger
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - install
+      - lint:
+          requires: install
+      - test
+          requires: lint
+      - dagger
+          requires: [test, lint]
