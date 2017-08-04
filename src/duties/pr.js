@@ -8,13 +8,15 @@ let prAssignee = ({ danger, fail }) => {
   }
 }
 
-let bigPr = ({ danger, warn }) => {
-  let threshold = 500
-  if (danger.github.pr.additions + danger.github.pr.deletions >= threshold) {
+let bigPr = ({ danger, warn, config: { prNetChangeThreshold } }) => {
+  if (
+    danger.github.pr.additions + danger.github.pr.deletions >=
+    prNetChangeThreshold
+  ) {
     log(warn)(
       `:exclamation: This PR is BIG (+${danger.github.pr.additions} -${danger
         .github.pr
-        .deletions})  \nPlease keep it below ${threshold} net changes`,
+        .deletions})  \nPlease keep it below ${prNetChangeThreshold} net changes`,
     )
   }
 }
@@ -25,11 +27,14 @@ let noPrDescription = ({ danger, fail }) => {
   }
 }
 
-let requestedReviewers = async ({ danger, warn }) => {
-  let reviewersRecommended = 2
-  if (danger.github.pr.requested_reviewers.length < reviewersRecommended) {
+let requestedReviewers = async ({
+  danger,
+  warn,
+  config: { recommendedPrReviewers },
+}) => {
+  if (danger.github.pr.requested_reviewers.length < recommendedPrReviewers) {
     let reviewerAmt = danger.github.pr.requested_reviewers.length
-    let netReviewers = reviewersRecommended - reviewerAmt
+    let netReviewers = recommendedPrReviewers - reviewerAmt
     let i18n = netReviewers === 1 ? 'reviewer' : 'reviewers'
     log(warn)(`You should add at least ${netReviewers} more ${i18n} to the PR`)
   }
