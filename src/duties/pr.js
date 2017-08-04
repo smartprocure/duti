@@ -27,7 +27,7 @@ let noPrDescription = ({ danger, fail }) => {
   }
 }
 
-let requestedReviewers = async ({
+let requestedReviewers = ({
   danger,
   warn,
   config: { recommendedPrReviewers },

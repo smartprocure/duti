@@ -15,14 +15,15 @@
     "test": "jest",
     "test:watch": "npm t -- --watch",
     "test:ci": "npm t -- --coverage --json --outputFile=test-results.json",
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint ./**/*.js",
     "lint:ci": "npm run lint -- -o lint-results.json -f json",
-    "danger": "danger",
+    "danger": "./bin/duti.js",
     "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma all"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
     "danger": "^1.1.0",
+    "lodash": "^4.17.4",
     "pkg-up": "^2.0.0"
   },
   "devDependencies": {
