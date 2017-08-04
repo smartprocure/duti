@@ -19,4 +19,15 @@ describe('lint results', () => {
 
     expect(warn).toHaveBeenCalled()
   })
+
+  it('neither fails or warns if successful', () => {
+    let warn = jest.fn()
+    let fail = jest.fn()
+    let lintResults = lintHelpers.passing
+    lint.hasWarnings({ lintResults, warn })
+    lint.hasErrors({ lintResults, fail })
+
+    expect(warn).not.toHaveBeenCalled()
+    expect(fail).not.toHaveBeenCalled()
+  })
 })
