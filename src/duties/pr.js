@@ -8,6 +8,12 @@ let prAssignee = ({ danger, fail }) => {
   }
 }
 
+let netNegativePR = ({ danger, message }) => {
+  if (danger.github.pr.additions > danger.github.pr.deletions) {
+    message('You reduced the total lines of code! Awesome! :+1:')
+  }
+}
+
 let bigPr = ({ danger, warn, config: { prNetChangeThreshold } }) => {
   if (
     danger.github.pr.additions + danger.github.pr.deletions >=
@@ -45,4 +51,5 @@ module.exports = {
   bigPr,
   noPrDescription,
   requestedReviewers,
+  netNegativePR,
 }
