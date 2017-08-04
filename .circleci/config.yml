@@ -23,7 +23,5 @@ jobs:
       - run:
           name: danger
           command: npm run danger
-      - store_lint_results:
-          path: lint-results.json
       - store_test_results:
           path: test-results.json
