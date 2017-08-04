@@ -16,3 +16,7 @@ duti.stdout.on('data', data => {
 duti.stderr.on('data', data => {
   console.log(`${data}`)
 })
+
+duti.on('close', code => {
+  console.log(`Duti exited with code: ${code}`)
+})
