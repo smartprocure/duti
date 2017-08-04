@@ -1,6 +1,11 @@
 /* eslint-env jest */
 
-let { log } = require('./utils')
+let {
+  log,
+  getLintResults,
+  checkFileExists,
+  getTestResults,
+} = require('./utils')
 
 describe('log', () => {
   it('runs the passed function', () => {
@@ -8,5 +13,35 @@ describe('log', () => {
     log(fn)('')
 
     expect(fn).toHaveBeenCalled()
+  })
+})
+
+describe('checkFileExists', () => {
+  it('finds files that exist', async () => {
+    let result = await checkFileExists(__filename)
+    expect(result).toBeDefined()
+  })
+
+  it('returns undefined if file does not exist', async () => {
+    let result = await checkFileExists('/imagainary/path/pls/fail.jpg')
+    expect(result).toBe(undefined)
+  })
+})
+
+describe('getLintResults', () => {
+  it('parses results', async () => {
+    let result = await getLintResults({
+      config: { lintResultsPath: './src/test-helpers' },
+    })
+    expect(result).toBeDefined()
+  })
+})
+
+describe('getTestResults', () => {
+  it('parses results', async () => {
+    let result = await getTestResults({
+      config: { testResultsPath: './src/test-helpers' },
+    })
+    expect(result).toBeDefined()
   })
 })
