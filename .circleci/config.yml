@@ -8,7 +8,7 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
-          name: install-npm-wee
+          name: install
           command: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
@@ -25,3 +25,14 @@ jobs:
           command: npm run danger
       - store_test_results:
           path: test-results.json
+  deploy:
+    docker:
+      - image: circleci/node:latest
+    branches:
+      only:
+        - master
+    steps:
+      - checkout
+      - run:
+          name: deploy
+          command: npm publish
