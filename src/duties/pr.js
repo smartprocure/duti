@@ -9,7 +9,7 @@ let prAssignee = ({ danger, fail }) => {
 }
 
 let netNegativePR = ({ danger, message }) => {
-  if (danger.github.pr.additions > danger.github.pr.deletions) {
+  if (danger.github.pr.additions < danger.github.pr.deletions) {
     message('You reduced the total lines of code! Awesome! :+1:')
   }
 }

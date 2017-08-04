@@ -45,4 +45,11 @@ describe('Pull Request', () => {
     pr.requestedReviewers({ danger, warn, config })
     expect(warn).toHaveBeenCalled()
   })
+
+  it('says nice things if the PR is net negative in LOC', () => {
+    let danger = { github: { pr: { additions: 0, deletions: 1 } } }
+    let message = jest.fn()
+    pr.netNegativePR({ danger, message })
+    expect(message).toHaveBeenCalled()
+  })
 })
