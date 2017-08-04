@@ -21,6 +21,7 @@
     "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma all"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "danger": "^1.1.0",
     "pkg-up": "^2.0.0"
   },

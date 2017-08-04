@@ -1,0 +1,61 @@
+[
+  {
+    "filePath": "/home/sean/code/dutil/src/duties/lint.js",
+    "messages": [
+      {
+        "ruleId": "no-plusplus",
+        "severity": 1,
+        "message": "Unary operator '++' used.",
+        "line": 2,
+        "column": 33,
+        "nodeType": "UpdateExpression",
+        "source": "  if (lintResults.reduce(acc => acc++, 0) > 0) {"
+      }
+    ],
+    "errorCount": 0,
+    "warningCount": 1,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "let hasNoErrors = ({ lintResults, fail }) => {\n  if (lintResults.reduce(acc => acc++, 0) > 0) {\n    fail('Lint failed!')\n  }\n}\n\nmodule.exports = {\n  hasNoErrors,\n}\n"
+  },
+  {
+    "filePath": "/home/sean/code/dutil/src/duties/lint.spec.js",
+    "messages": [],
+    "errorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "/home/sean/code/dutil/src/duties/pr.js",
+    "messages": [],
+    "errorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "/home/sean/code/dutil/src/duties/pr.spec.js",
+    "messages": [],
+    "errorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "/home/sean/code/dutil/src/test-helpers/lint-results.js",
+    "messages": [],
+    "errorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "/home/sean/code/dutil/src/test-helpers/test-results.js",
+    "messages": [],
+    "errorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  }
+]
