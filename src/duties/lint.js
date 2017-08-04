@@ -3,12 +3,12 @@ let { log, fileNameFromPath } = require('../utils')
 
 let messageTemplate = message => `
   <strong>${message.message}</strong>
-  <code>Line ${message.line}: ${message.source.trim()}</code>
-`
+  <code>Line ${message.line}: ${message.source.trim()}</code>`
+
 let formatLintMessages = messages =>
   _.flow(_.map(messageTemplate), _.join('\n'))(messages)
 
-let lintTemplate = (lint, severity) => `
+let lintTemplate = severity => lint => `
 <details>
   <summary>${fileNameFromPath(lint.filePath)}</summary>
   <p>Full Path: <code>${lint.filePath}</code></p>
@@ -22,7 +22,7 @@ let formatLint = (lintRes, severity) =>
         !_.isEmpty(lint.messages) &&
         _.some(m => m.severity === severity, lint.messages),
     ),
-    _.map(lint => lintTemplate(lint, severity)),
+    _.map(lintTemplate(severity)),
     _.join(''),
   )(lintRes)
 
