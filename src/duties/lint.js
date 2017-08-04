@@ -1,22 +1,24 @@
-let hasErrors = ({ lintResults, fail }) => {
+let { log } = require('../utils')
+
+let hasLintErrors = ({ lintResults, fail }) => {
   if (
     lintResults &&
     lintResults.reduce((acc, curr) => acc + curr.errorCount, 0) > 0
   ) {
-    fail('Your PR has lint errors. Please fix these and commit them.')
+    log(fail)('Your PR has lint errors. Please fix these and commit them.')
   }
 }
 
-let hasWarnings = ({ lintResults, warn }) => {
+let hasLintWarnings = ({ lintResults, warn }) => {
   if (
     lintResults &&
     lintResults.reduce((acc, curr) => acc + curr.warningCount, 0) > 0
   ) {
-    warn('Your PR has lint warnings. Please consider fixing these.')
+    log(warn)('Your PR has lint warnings. Please consider fixing these.')
   }
 }
 
 module.exports = {
-  hasErrors,
-  hasWarnings,
+  hasLintErrors,
+  hasLintWarnings,
 }

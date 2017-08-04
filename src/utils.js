@@ -15,26 +15,34 @@ let log = fn => str =>
 let checkFileExists = async path =>
   fs.existsSync(path) ? fs.readFileAsync(path, 'utf8') : undefined
 
+let fileToJson = contents =>
+  contents !== undefined ? JSON.parse(contents) : contents
+
 let getLintResults = async ({ config: { lintResultsPath } }) =>
-  checkFileExists(
-    path.resolve(
-      path.dirname(await pkgup()),
-      lintResultsPath,
-      'lint-results.json',
+  fileToJson(
+    await checkFileExists(
+      path.resolve(
+        path.dirname(await pkgup()),
+        lintResultsPath,
+        'lint-results.json',
+      ),
     ),
   )
 
 let getTestResults = async ({ config: { testResultsPath } }) =>
-  checkFileExists(
-    path.resolve(
-      path.dirname(await pkgup()),
-      testResultsPath,
-      'test-results.json',
+  fileToJson(
+    await checkFileExists(
+      path.resolve(
+        path.dirname(await pkgup()),
+        testResultsPath,
+        'test-results.json',
+      ),
     ),
   )
 
 module.exports = {
   log,
+  fileToJson,
   getLintResults,
   checkFileExists,
   getTestResults,

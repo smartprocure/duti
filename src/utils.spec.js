@@ -5,6 +5,7 @@ let {
   getLintResults,
   checkFileExists,
   getTestResults,
+  fileToJson,
 } = require('./utils')
 
 describe('log', () => {
@@ -43,5 +44,15 @@ describe('getTestResults', () => {
       config: { testResultsPath: './src/test-helpers' },
     })
     expect(result).toBeDefined()
+  })
+})
+
+describe('fileToJson', () => {
+  it('parses JSON if not undefined', () => {
+    expect(fileToJson('{}')).toEqual({})
+  })
+
+  it('returns undefined if undefined', () => {
+    expect(fileToJson(undefined)).toBe(undefined)
   })
 })

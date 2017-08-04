@@ -1,11 +1,13 @@
-let hasErrors = ({ testResults, fail }) => {
+let { log } = require('../utils')
+
+let hasTestErrors = ({ testResults, fail }) => {
   if (testResults && testResults.numFailedTests > 0) {
-    fail(
+    log(fail)(
       'This PR has failing tests. Please alleviate the errors and commit them',
     )
   }
 }
 
 module.exports = {
-  hasErrors,
+  hasTestErrors,
 }

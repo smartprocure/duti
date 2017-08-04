@@ -7,7 +7,7 @@ describe('test results', () => {
   it('fails if they have errors', () => {
     let fail = jest.fn()
     let testResults = testHelpers.failing
-    test.hasErrors({ testResults, fail })
+    test.hasTestErrors({ testResults, fail })
 
     expect(fail).toHaveBeenCalled()
   })
@@ -15,7 +15,7 @@ describe('test results', () => {
   it('doesnt fail if it is passing', () => {
     let fail = jest.fn()
     let testResults = testHelpers.passing
-    test.hasErrors({ testResults, fail })
+    test.hasTestErrors({ testResults, fail })
 
     expect(fail).not.toHaveBeenCalled()
   })
