@@ -6,12 +6,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
       - run:
@@ -23,8 +23,6 @@ jobs:
       - run:
           name: danger
           command: npm run danger
-      - store_test_results:
-          path: test-results.json
   deploy:
     docker:
       - image: circleci/node:latest
