@@ -11,7 +11,7 @@ let resultTemplate = r => `<details>
 let hasTestErrors = ({ testResults, fail }) => {
   if (testResults && testResults.numFailedTests > 0) {
     let allFailures = _.flow(
-      _.filter(result => !_.isEmpty(result.message)),
+      _.reject(result => _.isEmpty(result.message)),
       _.map(resultTemplate),
       _.join('\n'),
     )(testResults.testResults)
