@@ -17,9 +17,7 @@ let lintTemplate = severity => lint => `
 
 let formatLint = (severity, lintRes) =>
   _.flow(
-    _.filter(
-      lint => !_.isEmpty(lint.messages) && _.some({ severity }, lint.messages),
-    ),
+    _.filter(lint => _.some({ severity }, lint.messages)),
     _.map(lintTemplate(severity)),
     _.join(''),
   )(lintRes)
