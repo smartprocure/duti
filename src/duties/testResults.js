@@ -1,7 +1,6 @@
 let _ = require('lodash/fp')
 let stripAnsi = require('strip-ansi')
 let { basename } = require('path')
-let { log } = require('../utils')
 
 let resultTemplate = r => `<details>
   <summary>${basename(r.name)}</summary>
