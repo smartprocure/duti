@@ -15,19 +15,19 @@ let lintTemplate = severity => lint => `
   ${formatLintMessages(_.filter({ severity }, lint.messages))}
 </details>`
 
-let formatLint = (severity, lintRes) =>
+let formatLint = severity =>
   _.flow(
     _.filter(lint => _.some({ severity }, lint.messages)),
     _.map(lintTemplate(severity)),
     _.join(''),
-  )(lintRes)
+  )
 
 let hasLintErrors = ({ lintResults, fail }) => {
   if (_.sumBy('errorCount', lintResults) > 0) {
     log(
       fail,
       `Your PR has lint errors. Please fix these and commit them.
-      ${formatLint(2, lintResults)}`,
+      ${formatLint(2)(lintResults)}`,
     )
   }
 }
@@ -37,7 +37,7 @@ let hasLintWarnings = ({ lintResults, warn }) => {
     log(
       warn,
       `Your PR has lint warnings. Please consider fixing these.
-      ${formatLint(1, lintResults)}`,
+      ${formatLint(1)(lintResults)}`,
     )
   }
 }
