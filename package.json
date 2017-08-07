@@ -1,13 +1,12 @@
 {
   "name": "duti",
   "description": "Danger UTIlities",
-  "private": true,
   "bin": {
     "duti": "bin/duti.js"
   },
   "version": "0.1.0",
   "main": "src/index.js",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "engines": {
     "node": ">=8.0.0"
   },
