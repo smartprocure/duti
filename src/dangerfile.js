@@ -7,7 +7,7 @@ let { getLintResults, getTestResults } = require('./utils')
 
 schedule(async () =>
   Promise.all(
-    _.over(_.map(duty => duty, duties))({
+    _.over(_.values(duties))({
       danger,
       fail,
       warn,
