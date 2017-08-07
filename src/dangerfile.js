@@ -7,16 +7,14 @@ let { getLintResults, getTestResults } = require('./utils')
 
 schedule(async () =>
   Promise.all(
-    _.map(async duti => {
-      await duti({
-        danger,
-        fail,
-        warn,
-        config,
-        message,
-        lintResults: await getLintResults({ config }),
-        testResults: await getTestResults({ config }),
-      })
-    }, duties),
+    _.over(_.map(duty => duty, duties))({
+      danger,
+      fail,
+      warn,
+      config,
+      message,
+      lintResults: await getLintResults({ config }),
+      testResults: await getTestResults({ config }),
+    }),
   ),
 )
