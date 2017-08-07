@@ -40,7 +40,7 @@
       ],
       "endTime": 1501808992053,
       "message": "",
-      "name": "/home/sean/code/dutil/src/duties/lint.spec.js",
+      "name": "/duti/src/duties/lint.spec.js",
       "startTime": 1501808991695,
       "status": "passed",
       "summary": ""
@@ -55,7 +55,7 @@
       ],
       "endTime": 1501808992190,
       "message": "",
-      "name": "/home/sean/code/dutil/src/utils.spec.js",
+      "name": "/duti/src/utils.spec.js",
       "startTime": 1501808992073,
       "status": "passed",
       "summary": ""
@@ -95,7 +95,7 @@
       ],
       "endTime": 1501808992298,
       "message": "",
-      "name": "/home/sean/code/dutil/src/duties/pr.spec.js",
+      "name": "/duti/src/duties/pr.spec.js",
       "startTime": 1501808992206,
       "status": "passed",
       "summary": ""

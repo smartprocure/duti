@@ -1,5 +1,6 @@
 let _ = require('lodash/fp')
-let { log, stripAnsi, fileNameFromPath } = require('../utils')
+let stripAnsi = require('strip-ansi')
+let { log, fileNameFromPath } = require('../utils')
 
 let resultTemplate = r => `<details>
   <summary>${fileNameFromPath(r.name)}</summary>

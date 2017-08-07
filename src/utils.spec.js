@@ -3,7 +3,7 @@
 let {
   log,
   getLintResults,
-  checkFileExists,
+  readFileIfExists,
   getTestResults,
   fileToJson,
 } = require('./utils')
@@ -19,12 +19,12 @@ describe('log', () => {
 
 describe('checkFileExists', () => {
   it('finds files that exist', async () => {
-    let result = await checkFileExists(__filename)
+    let result = await readFileIfExists(__filename)
     expect(result).toBeDefined()
   })
 
   it('returns undefined if file does not exist', async () => {
-    let result = await checkFileExists('/imagainary/path/pls/fail.jpg')
+    let result = await readFileIfExists('/imagainary/path/pls/fail.jpg')
     expect(result).toBe(undefined)
   })
 })

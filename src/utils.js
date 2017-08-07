@@ -5,6 +5,7 @@ let Promise = require('bluebird')
 let path = require('path')
 let pkgup = require('pkg-up')
 let _ = require('lodash/fp')
+let F = require('futil-js')
 
 Promise.promisifyAll(fs)
 
@@ -13,23 +14,16 @@ let log = fn => str =>
     console.log(`[${`${fn.name}`.toUpperCase()}] ${str}`)) ||
   fn(str)
 
-let stripAnsi = str =>
-  str.replace(
-    /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
-    '',
-  )
-
 let fileNameFromPath = (str, del = '/') => _.flow(_.split(del), _.last)(str)
 
-let checkFileExists = async path =>
+let readFileIfExists = async path =>
   fs.existsSync(path) ? fs.readFileAsync(path, 'utf8') : undefined
 
-let fileToJson = contents =>
-  contents !== undefined ? JSON.parse(contents) : contents
+let fileToJson = F.unless(_.isNil, JSON.parse)
 
 let getLintResults = async ({ config: { lintResultsPath } }) =>
   fileToJson(
-    await checkFileExists(
+    await readFileIfExists(
       path.resolve(
         path.dirname(await pkgup()),
         lintResultsPath,
@@ -40,7 +34,7 @@ let getLintResults = async ({ config: { lintResultsPath } }) =>
 
 let getTestResults = async ({ config: { testResultsPath } }) =>
   fileToJson(
-    await checkFileExists(
+    await readFileIfExists(
       path.resolve(
         path.dirname(await pkgup()),
         testResultsPath,
@@ -53,8 +47,7 @@ module.exports = {
   log,
   fileToJson,
   getLintResults,
-  checkFileExists,
+  readFileIfExists,
   getTestResults,
-  stripAnsi,
   fileNameFromPath,
 }

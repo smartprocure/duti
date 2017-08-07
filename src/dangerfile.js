@@ -5,11 +5,8 @@ let config = require('./config')
 let duties = require('./duties')
 let { getLintResults, getTestResults } = require('./utils')
 
-schedule(async () => {
-  let lintResults = await getLintResults({ config })
-  let testResults = await getTestResults({ config })
-
-  return Promise.all(
+schedule(async () =>
+  Promise.all(
     _.map(async duti => {
       await duti({
         danger,
@@ -17,9 +14,9 @@ schedule(async () => {
         warn,
         config,
         message,
-        lintResults,
-        testResults,
+        lintResults: await getLintResults({ config }),
+        testResults: await getTestResults({ config }),
       })
     }, duties),
-  )
-})
+  ),
+)

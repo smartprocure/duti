@@ -38,8 +38,8 @@ let requestedReviewers = ({
   warn,
   config: { recommendedPrReviewers },
 }) => {
-  if (danger.github.pr.requested_reviewers.length < recommendedPrReviewers) {
-    let reviewerAmt = danger.github.pr.requested_reviewers.length
+  let reviewerAmt = danger.github.pr.requested_reviewers.length
+  if (reviewerAmt < recommendedPrReviewers) {
     let netReviewers = recommendedPrReviewers - reviewerAmt
     let i18n = netReviewers === 1 ? 'reviewer' : 'reviewers'
     log(warn)(`You should add at least ${netReviewers} more ${i18n} to the PR`)

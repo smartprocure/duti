@@ -60,7 +60,7 @@ let passing = {
       ],
       endTime: 1501803756875,
       message: '',
-      name: '/home/sean/code/dutil/src/duties/pr.spec.js',
+      name: '/duti/src/duties/pr.spec.js',
       startTime: 1501803756531,
       status: 'passed',
       summary: '',
@@ -75,7 +75,7 @@ let passing = {
       ],
       endTime: 1501803756926,
       message: '',
-      name: '/home/sean/code/dutil/src/utils.spec.js',
+      name: '/duti/src/utils.spec.js',
       startTime: 1501803756895,
       status: 'passed',
       summary: '',
@@ -146,7 +146,7 @@ let failing = {
       ],
       endTime: 1501804155537,
       message: '',
-      name: '/home/sean/code/dutil/src/duties/pr.spec.js',
+      name: '/duti/src/duties/pr.spec.js',
       startTime: 1501804155342,
       status: 'passed',
       summary: '',
@@ -155,7 +155,7 @@ let failing = {
       assertionResults: [
         {
           failureMessages: [
-            'Error: \u001b[2mexpect(\u001b[22m\u001b[31mjest.fn()\u001b[39m\u001b[2m).not.toHaveBeenCalled(\u001b[22m\u001b[2m)\u001b[22m\n\nExpected mock function not to be called but it was called with:\n  \u001b[31m[""]\u001b[39m\n    at Object.it (/home/sean/code/dutil/src/utils.spec.js:10:20)\n    at Object.asyncFn (/home/sean/code/dutil/node_modules/jest-jasmine2/build/jasmine-async.js:68:30)\n    at resolve (/home/sean/code/dutil/node_modules/jest-jasmine2/build/queueRunner.js:38:12)\n    at Promise (<anonymous>)\n    at mapper (/home/sean/code/dutil/node_modules/jest-jasmine2/build/queueRunner.js:31:21)\n    at Promise.resolve.then.el (/home/sean/code/dutil/node_modules/p-map/index.js:42:16)\n    at <anonymous>',
+            'Error: \u001b[2mexpect(\u001b[22m\u001b[31mjest.fn()\u001b[39m\u001b[2m).not.toHaveBeenCalled(\u001b[22m\u001b[2m)\u001b[22m\n\nExpected mock function not to be called but it was called with:\n  \u001b[31m[""]\u001b[39m\n    at Object.it (/duti/src/utils.spec.js:10:20)\n    at Object.asyncFn (/duti/node_modules/jest-jasmine2/build/jasmine-async.js:68:30)\n    at resolve (/duti/node_modules/jest-jasmine2/build/queueRunner.js:38:12)\n    at Promise (<anonymous>)\n    at mapper (/duti/node_modules/jest-jasmine2/build/queueRunner.js:31:21)\n    at Promise.resolve.then.el (/duti/node_modules/p-map/index.js:42:16)\n    at <anonymous>',
           ],
           status: 'failed',
           title: 'runs the passed function',
@@ -164,7 +164,7 @@ let failing = {
       endTime: 1501804155663,
       message:
         '\u001b[1m\u001b[31m  \u001b[1m● \u001b[1mlog › runs the passed function\u001b[39m\u001b[22m\n\n    \u001b[2mexpect(\u001b[22m\u001b[31mjest.fn()\u001b[39m\u001b[2m).not.toHaveBeenCalled(\u001b[22m\u001b[2m)\u001b[22m\n    \n    Expected mock function not to be called but it was called with:\n      \u001b[31m[""]\u001b[39m\n\u001b[2m      \n      \u001b[2mat Object.it (\u001b[2m\u001b[0m\u001b[36msrc/utils.spec.js\u001b[39m\u001b[0m\u001b[2m:10:20)\u001b[2m\n          at Promise (<anonymous>)\n      \u001b[2mat Promise.resolve.then.el (\u001b[2m\u001b[0m\u001b[36mnode_modules/p-map/index.js\u001b[39m\u001b[0m\u001b[2m:42:16)\u001b[2m\n          at <anonymous>\u001b[22m\n',
-      name: '/home/sean/code/dutil/src/utils.spec.js',
+      name: '/duti/src/utils.spec.js',
       startTime: 1501804155556,
       status: 'failed',
       summary: '',
