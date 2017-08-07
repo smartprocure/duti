@@ -23,14 +23,9 @@ jobs:
       - run:
           name: danger
           command: npm run danger
-  deploy:
-    docker:
-      - image: circleci/node:latest
-    branches:
-      only:
-        - master
-    steps:
-      - checkout
-      - run:
-          name: deploy
-          command: npm publish
+      - deploy:
+          name: Maybe Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              npm publish
+            fi
