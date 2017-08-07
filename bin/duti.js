@@ -10,13 +10,13 @@ let duti = spawn(path.resolve(__dirname, '../node_modules/.bin/danger'), [
 ])
 
 duti.stdout.on('data', data => {
-  console.log(`${data}`)
+  process.stdout.write(`${data}`)
 })
 
 duti.stderr.on('data', data => {
-  console.log(`${data}`)
+  process.stderr.write(`${data}`)
 })
 
 duti.on('close', code => {
-  console.log(`Duti exited with code: ${code}`)
+  process.stdout.write(`Duti exited with code: ${code}`)
 })
