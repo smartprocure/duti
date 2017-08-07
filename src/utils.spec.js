@@ -32,7 +32,7 @@ describe('checkFileExists', () => {
 describe('getLintResults', () => {
   it('parses results', async () => {
     let result = await getLintResults({
-      config: { lintResultsPath: './src/test-helpers' },
+      config: { lintResultsPath: './src/test-data' },
     })
     expect(result).toBeDefined()
   })
@@ -41,7 +41,7 @@ describe('getLintResults', () => {
 describe('getTestResults', () => {
   it('parses results', async () => {
     let result = await getTestResults({
-      config: { testResultsPath: './src/test-helpers' },
+      config: { testResultsPath: './src/test-data' },
     })
     expect(result).toBeDefined()
   })

@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 let test = require('./testResults')
-let testHelpers = require('../test-helpers/test-results')
+let testHelpers = require('../test-data/test-results')
 
 describe('test results', () => {
   it('fails if they have errors', () => {

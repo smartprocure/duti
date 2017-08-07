@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 let lint = require('./lint')
-let lintHelpers = require('../test-helpers/lint-results')
+let lintHelpers = require('../test-data/lint-results')
 
 describe('lint results', () => {
   it('fails if they have errors', () => {
