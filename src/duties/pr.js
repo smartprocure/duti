@@ -29,7 +29,7 @@ let bigPr = ({ danger, warn, config: { prNetChangeThreshold } }) => {
 
 let noPrDescription = ({ danger, fail }) => {
   if (danger.github.pr.body.length === 0) {
-    log(fail, 'Please add a description to your PR')
+    fail('Please add a description to your PR')
   }
 }
 
@@ -42,7 +42,7 @@ let requestedReviewers = ({
   if (reviewerAmt < recommendedPrReviewers) {
     let netReviewers = recommendedPrReviewers - reviewerAmt
     let i18n = netReviewers === 1 ? 'reviewer' : 'reviewers'
-    log(warn, `You should add at least ${netReviewers} more ${i18n} to the PR`)
+    warn(`You should add at least ${netReviewers} more ${i18n} to the PR`)
   }
 }
 
