@@ -9,10 +9,12 @@ let F = require('futil-js')
 
 Promise.promisifyAll(fs)
 
-let log = fn => str =>
-  (process.env.NODE_ENV !== 'test' &&
-    console.log(`[${`${fn.name}`.toUpperCase()}] ${str}`)) ||
-  fn(str)
+let log = _.curry(
+  (fn, str) =>
+    (process.env.NODE_ENV !== 'test' &&
+      console.log(`[${`${fn.name}`.toUpperCase()}] ${str}`)) ||
+    fn(str),
+)
 
 let fileNameFromPath = (str, del = '/') => _.flow(_.split(del), _.last)(str)
 

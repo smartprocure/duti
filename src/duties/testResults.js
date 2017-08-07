@@ -15,7 +15,8 @@ let hasTestErrors = ({ testResults, fail }) => {
       _.join('\n'),
     )(testResults.testResults)
 
-    log(fail)(
+    log(
+      fail,
       `This PR has failing tests. Please alleviate the errors and commit them\n\n${allFailures}`,
     )
   }
