@@ -2,8 +2,7 @@ let { log } = require('../utils')
 
 let prAssignee = ({ danger, fail }) => {
   if (!danger.github.pr.assignee) {
-    log(
-      fail,
+    fail(
       'Please assign someone to merge this PR, and optionally include people who should review.',
     )
   }
@@ -20,8 +19,7 @@ let bigPr = ({ danger, warn, config: { prNetChangeThreshold } }) => {
     danger.github.pr.additions + danger.github.pr.deletions >=
     prNetChangeThreshold
   ) {
-    log(
-      warn,
+    warn(
       `:exclamation: This PR is BIG (+${danger.github.pr.additions} -${danger
         .github.pr
         .deletions})  \nPlease keep it below ${prNetChangeThreshold} net changes`,

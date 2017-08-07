@@ -24,18 +24,14 @@ let formatLint = severity =>
 
 let hasLintErrors = ({ lintResults, fail }) => {
   if (_.sumBy('errorCount', lintResults) > 0) {
-    log(
-      fail,
-      `Your PR has lint errors. Please fix these and commit them.
-      ${formatLint(2)(lintResults)}`,
-    )
+    fail(`Your PR has lint errors. Please fix these and commit them.
+      ${formatLint(2)(lintResults)}`)
   }
 }
 
 let hasLintWarnings = ({ lintResults, warn }) => {
   if (_.sumBy('warningCount', lintResults) > 0) {
-    log(
-      warn,
+    warn(
       `Your PR has lint warnings. Please consider fixing these.
       ${formatLint(1)(lintResults)}`,
     )
