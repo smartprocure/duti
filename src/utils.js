@@ -16,8 +16,6 @@ let log = _.curry(
     fn(str),
 )
 
-let fileNameFromPath = (str, del = '/') => _.flow(_.split(del), _.last)(str)
-
 let readFileIfExists = async path =>
   fs.existsSync(path) ? fs.readFileAsync(path, 'utf8') : undefined
 
@@ -53,6 +51,5 @@ module.exports = {
   getLintResults,
   readFileIfExists,
   getTestResults,
-  fileNameFromPath,
   getRunningDirectory,
 }

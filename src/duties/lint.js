@@ -1,5 +1,6 @@
 let _ = require('lodash/fp')
-let { log, fileNameFromPath } = require('../utils')
+let { basename } = require('path')
+let { log } = require('../utils')
 
 let messageTemplate = message => `
   <strong>${message.message}</strong>
@@ -9,7 +10,7 @@ let formatLintMessages = _.flow(_.map(messageTemplate), _.join('\n'))
 
 let lintTemplate = severity => lint => `
 <details>
-  <summary>${fileNameFromPath(lint.filePath)}</summary>
+  <summary>${basename(lint.filePath)}</summary>
   <p>Full Path: <code>${lint.filePath}</code></p>
   ${formatLintMessages(_.filter({ severity }, lint.messages))}
 </details>`

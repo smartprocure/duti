@@ -1,9 +1,10 @@
 let _ = require('lodash/fp')
 let stripAnsi = require('strip-ansi')
-let { log, fileNameFromPath } = require('../utils')
+let { basename } = require('path')
+let { log } = require('../utils')
 
 let resultTemplate = r => `<details>
-  <summary>${fileNameFromPath(r.name)}</summary>
+  <summary>${basename(r.name)}</summary>
   ${stripAnsi(r.message)}
 </details>`
 
