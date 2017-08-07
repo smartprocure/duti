@@ -20,6 +20,16 @@
     "danger": "./bin/duti.js",
     "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma all"
   },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    }
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "danger": "^1.1.0",
