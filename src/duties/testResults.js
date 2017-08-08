@@ -2,21 +2,25 @@ let _ = require('lodash/fp')
 let stripAnsi = require('strip-ansi')
 let { basename } = require('path')
 
-let resultTemplate = r => `<details>
-  <summary>${basename(r.name)}</summary>
-  ${stripAnsi(r.message)}
+let resultTemplate = (r, isMocha) => `<details>
+  <summary>${isMocha ? r.title : basename(r.name)}</summary>
+  <code>${isMocha ? r.err.message : stripAnsi(r.message)}</code>
 </details>`
 
 let hasTestErrors = ({ testResults, fail }) => {
-  if (testResults && testResults.numFailedTests > 0) {
+  let isMocha = !_.isNil(testResults.stats)
+  if (
+    testResults &&
+    (isMocha ? testResults.stats.failures : testResults.numFailedTests) > 0
+  ) {
     _.flow(
-      _.reject(result => _.isEmpty(result.message)),
-      _.map(resultTemplate),
+      _.reject(result => _.isEmpty(isMocha ? result.err : result.message)),
+      _.map(res => resultTemplate(res, isMocha)),
       _.join('\n'),
       allFailures =>
         `This PR has failing tests. Please alleviate the errors and commit them\n\n${allFailures}`,
       fail,
-    )(testResults.testResults)
+    )(isMocha ? testResults.tests : testResults.testResults)
   }
 }
 
