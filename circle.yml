@@ -4,7 +4,7 @@ machine:
     America/New_York
   node:
     version:
-      "latest"
+      stable
 
 dependencies:
   pre:
