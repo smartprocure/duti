@@ -6,7 +6,7 @@ let path = require('path')
 let duti = spawn('danger', [
   'run',
   '--dangerfile',
-  path.resolve('../src/dangerfile.js'),
+  path.resolve(__dirname, '../src/dangerfile.js'),
 ])
 
 duti.stdout.on('data', data => {
