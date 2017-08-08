@@ -1,0 +1,25 @@
+# For more options, check: https://circleci.com/docs/config-sample/
+machine:
+  timezone:
+    America/New_York
+  node:
+    version:
+      "latest"
+
+dependencies:
+  pre:
+    - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+  cache_directories:
+    - "node_modules"
+
+test:
+  override:
+    - npm run lint:ci
+    - npm run test:ci
+    - npm run danger
+
+deployment:
+  npm:
+    branch: master
+    commands:
+      - npm publish
