@@ -18,19 +18,23 @@ describe('emptyChangelog', () => {
 })
 
 describe('versionBump', () => {
-  it('fails if the version was not bumped', () => {
+  it('fails if the version was not bumped', async () => {
     let fail = jest.fn()
-    let diffForFile = jest.fn(() => [''])
+    let diffForFile = jest.fn(async () => ({
+      diff: '',
+    }))
     let danger = { git: { diffForFile } }
-    versionBump({ danger, fail })
+    await versionBump({ danger, fail })
     expect(fail).toHaveBeenCalled()
   })
 
-  it('doesnt fails if the version was not bumped', () => {
+  it('doesnt fails if the version was bumped', async () => {
     let fail = jest.fn()
-    let diffForFile = jest.fn(() => ['version'])
+    let diffForFile = jest.fn(async () => ({
+      diff: '{"version": "1.0.0"}',
+    }))
     let danger = { git: { diffForFile } }
-    versionBump({ danger, fail })
+    await versionBump({ danger, fail })
     expect(fail).not.toHaveBeenCalled()
   })
 })
