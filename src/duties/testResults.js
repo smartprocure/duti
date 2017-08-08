@@ -8,7 +8,7 @@ let resultTemplate = (r, isMocha) => `<details>
 </details>`
 
 let hasTestErrors = ({ testResults, fail }) => {
-  let isMocha = testResults.stats
+  let isMocha = _.get('stats', testResults)
   if (
     testResults &&
     (isMocha ? testResults.stats.failures : testResults.numFailedTests) > 0
