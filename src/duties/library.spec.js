@@ -1,6 +1,5 @@
 /* eslint-env jest */
 let { emptyChangelog, versionBump, readmeUpdate } = require('./library')
-let _ = require('lodash/fp')
 
 describe('emptyChangelog', () => {
   it('fails if the changelog has not been updated', () => {
