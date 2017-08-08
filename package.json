@@ -2,9 +2,9 @@
   "name": "duti",
   "description": "Danger UTIlities",
   "bin": {
-    "duti": "bin/duti.js"
+    "duti": "bin/duti"
   },
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "src/index.js",
   "license": "MIT",
   "engines": {
