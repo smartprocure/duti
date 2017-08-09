@@ -14,12 +14,12 @@ let notPrettierErrorTemplate = file => `
 `
 
 let detectPrettier = async ({ danger, warn }) => {
-  let allJsFiles = _.filter(p => path.extname(p) === '.js')(
+  let allJsFiles = _.filter(
+    p => path.extname(p).match(/.jsx?/g),
     _.concat(danger.git.created_files, danger.git.modified_files),
   )
   if (allJsFiles.length) {
     let uglyFiles = await _.flow(
-      _.filter(p => path.extname(p) === '.js'),
       _.filter(async p =>
         prettier.check(`${await fileToString(p)}`, prettierCfg),
       ),
