@@ -18,5 +18,5 @@ duti.stderr.on('data', data => {
 })
 
 duti.on('close', code => {
-  process.stdout.write(`Duti exited with code: ${code}`)
+  process.stdout.write(`Duti exited with code: ${code}\n`)
 })
