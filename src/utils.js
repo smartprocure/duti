@@ -44,7 +44,7 @@ let getTestResults = _.flow(
 )
 
 let fileToString = async filePath =>
-  fs.readFileAsync(filePath, 'utf8').toString('utf8')
+  (await fs.readFileAsync(filePath)).toString('utf8')
 
 module.exports = {
   log,
