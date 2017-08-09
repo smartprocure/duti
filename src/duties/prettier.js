@@ -9,8 +9,15 @@ Promise.promisifyAll(fs)
 
 let prettierCfg = { semi: false, singleQuote: true, trailingComma: 'all' }
 
-let notPrettierErrorTemplate = file => `
-  <code>${file}</code>
+let notPrettierErrorTemplate = async file => `
+  <details>
+    <summary><code>${file}</code></summary>
+    Here it is Prettified:
+
+    <pre>
+      ${await prettier.format(await fileToString(file), prettierCfg)}
+    </pre>
+  </details>
 `
 
 let detectPrettier = async ({ danger, warn }) => {
@@ -24,7 +31,9 @@ let detectPrettier = async ({ danger, warn }) => {
     )(allJsFiles)
     if (uglyFiles.length) {
       warn(`Some files were not formatted using Prettier. Please run prettier on them.
-${_.flow(_.map(notPrettierErrorTemplate), _.join('\n\n'))(uglyFiles)}
+${_.flow(_.map(notPrettierErrorTemplate), await Promise.all, _.join('\n'))(
+        uglyFiles,
+      )}
       `)
     }
   }
