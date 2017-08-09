@@ -15,7 +15,7 @@ let notPrettierErrorTemplate = file => `
 
 let detectPrettier = async ({ danger, warn }) => {
   let allJsFiles = _.filter(
-    p => path.extname(p).match(/.jsx?/g),
+    p => /\.jsx?$/g.test(path.extname(p)),
     _.concat(danger.git.created_files, danger.git.modified_files),
   )
   if (allJsFiles.length) {
