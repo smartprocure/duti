@@ -43,6 +43,8 @@ let getTestResults = _.flow(
   readLocalJsonFile('test-results.json'),
 )
 
+let fileToString = async filePath => `${fs.readFileAsync(filePath, 'utf8')}`
+
 module.exports = {
   log,
   fileToJson,
@@ -51,4 +53,5 @@ module.exports = {
   getTestResults,
   getRunningDirectory,
   readJsonFile,
+  fileToString,
 }
