@@ -20,9 +20,7 @@ let detectPrettier = async ({ danger, warn }) => {
   )
   if (allJsFiles.length) {
     let uglyFiles = await _.flow(
-      _.filter(async p =>
-        prettier.check(`${await fileToString(p)}`, prettierCfg),
-      ),
+      _.filter(async p => prettier.check(await fileToString(p), prettierCfg)),
     )(allJsFiles)
     if (uglyFiles.length) {
       warn(`Some files were not formatted using Prettier. Please run prettier on them.
