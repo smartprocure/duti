@@ -3,12 +3,12 @@
 let { detectPrettier } = require('./prettier')
 
 describe('detectPrettier', () => {
-  it('warns if code is not prettified', () => {
+  it('warns if code is not prettified', async () => {
     let fail = jest.fn()
-    let sourceCode = `let bob = {thing:     ["1", '2']};`
-    let prettierCode = "let bob = {thing: ['1', '2']}\n"
-    let danger = {}
-    detectPrettier({ danger, fail })
+    let danger = {
+      git: { created_files: ['src/test-data/ugly.js'], modified_files: [] },
+    }
+    await detectPrettier({ danger, fail })
 
     expect(fail).toHaveBeenCalled()
   })
