@@ -13,7 +13,7 @@ let notPrettierErrorTemplate = file => `
   <code>${file}</code>
 `
 
-let detectPrettier = async ({ danger, fail }) => {
+let detectPrettier = async ({ danger, warn }) => {
   let allJsFiles = _.filter(p => path.extname(p) === '.js')(
     _.concat(danger.git.created_files, danger.git.modified_files),
   )
@@ -25,7 +25,7 @@ let detectPrettier = async ({ danger, fail }) => {
       ),
     )(allJsFiles)
     if (uglyFiles.length) {
-      fail(`Some files were not formatted using Prettier. Please run prettier on them.
+      warn(`Some files were not formatted using Prettier. Please run prettier on them.
 ${_.flow(_.map(notPrettierErrorTemplate), _.join('\n\n'))(uglyFiles)}
       `)
     }
