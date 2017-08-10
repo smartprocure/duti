@@ -39,7 +39,12 @@ let detectPrettier = async ({ danger, warn }) => {
         }
       }, uglyFiles)
       warn(`Some files were not formatted using Prettier. Please run prettier on them.
-${_.join(await Promise.map(_.map(notPrettierErrorTemplate, n)), '\n')}
+${_.join(
+        await Promise.resolve(
+          Promise.all(_.map(notPrettierErrorTemplate, n)),
+          '\n',
+        ),
+      )}
       `)
     }
   }
