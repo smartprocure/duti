@@ -32,6 +32,7 @@ let detectPrettier = async ({ danger, warn }) => {
     if (uglyFiles.length) {
       let n = _.map(async f => {
         let contents = await fileToString(f)
+        console.log(f)
         return {
           path: f,
           contents,
