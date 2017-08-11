@@ -1,3 +1,7 @@
+## 0.3.3
+
+- Made readme check warn instead fail
+
 ## 0.3.2
 
 - Fix issue with NPM not finding `bin/duti.js`
