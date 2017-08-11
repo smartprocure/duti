@@ -41,16 +41,16 @@ describe('versionBump', () => {
 
 describe('readmeUpdate', () => {
   it('fails if the readme has not been updated', () => {
-    let fail = jest.fn()
+    let warn = jest.fn()
     let danger = { git: { modified_files: [] } }
-    readmeUpdate({ danger, fail })
-    expect(fail).toHaveBeenCalled()
+    readmeUpdate({ danger, warn })
+    expect(warn).toHaveBeenCalled()
   })
 
   it('doesnt fail if the readme has been updated', () => {
-    let fail = jest.fn()
+    let warn = jest.fn()
     let danger = { git: { modified_files: ['README.md'] } }
-    readmeUpdate({ danger, fail })
-    expect(fail).not.toHaveBeenCalled()
+    readmeUpdate({ danger, warn })
+    expect(warn).not.toHaveBeenCalled()
   })
 })
