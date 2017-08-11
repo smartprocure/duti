@@ -16,9 +16,9 @@ let versionBump = async ({ danger, fail }) => {
   }
 }
 
-let readmeUpdate = ({ danger, fail }) => {
+let readmeUpdate = ({ danger, warn }) => {
   if (!_.includes('README.md', danger.git.modified_files)) {
-    fail('The README has not been updated. Please update the README.')
+    warn('The README has not been updated. Please update the README.')
   }
 }
 
