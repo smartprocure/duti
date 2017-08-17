@@ -19,7 +19,7 @@ let hasTestErrors = ({ testResults, fail }) => {
       _.join('\n'),
       allFailures =>
         `This PR has failing tests. Please alleviate the errors and commit them\n\n${allFailures}`,
-      fail,
+      fail
     )(isMocha ? testResults.tests : testResults.testResults)
   }
 }

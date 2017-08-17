@@ -1,3 +1,7 @@
+## 0.3.4
+
+- Changed internal prettier config to be ES5-compatible
+
 ## 0.3.3
 
 - Made readme check warn instead fail
