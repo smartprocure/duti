@@ -2,6 +2,10 @@
 
 - Reduce default configuration of recommended reviewers to 1
 
+## 0.3.5
+
+- Always run duti against itself in CI
+
 ## 0.3.4
 
 - Changed internal prettier config to be ES5-compatible
