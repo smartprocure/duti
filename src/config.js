@@ -1,6 +1,6 @@
 module.exports = {
   prNetChangeThreshold: 500,
-  recommendedPrReviewers: 2,
+  recommendedPrReviewers: 1,
   lintResultsPath: '.',
   testResultsPath: '.',
 }
