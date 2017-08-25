@@ -13,7 +13,10 @@ jobs:
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
-            - ./node_modules
+            - ./node_modules\
+      - add_ssh_keys:
+          fingerprints:
+            - "76:ba:f6:b5:1f:73:72:c8:3d:71:6a:0f:e3:08:ab:61"
       - run:
           name: lint
           command: npm run lint:ci
