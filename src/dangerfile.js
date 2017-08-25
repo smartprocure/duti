@@ -15,6 +15,6 @@ schedule(async () =>
       message: log(message),
       lintResults: await getLintResults({ config }),
       testResults: await getTestResults({ config }),
-    })
-  )
+    }),
+  ),
 )
