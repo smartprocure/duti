@@ -20,7 +20,7 @@ let passing = {
     total: 0,
     unchecked: 0,
     unmatched: 0,
-    updated: 0
+    updated: 0,
   },
   startTime: 1501803756150,
   success: true,
@@ -29,60 +29,60 @@ let passing = {
       assertionResults: [
         {
           failureMessages: [],
-          status: "passed",
-          title: "fails if the description is empty"
+          status: 'passed',
+          title: 'fails if the description is empty',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "warns if there are too many additions"
+          status: 'passed',
+          title: 'warns if there are too many additions',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "warns if there are too many deletions"
+          status: 'passed',
+          title: 'warns if there are too many deletions',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "warns if there are too many additions and deletions"
+          status: 'passed',
+          title: 'warns if there are too many additions and deletions',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "fails if there is no assignee"
+          status: 'passed',
+          title: 'fails if there is no assignee',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "warns if there are not enough reviewers"
-        }
+          status: 'passed',
+          title: 'warns if there are not enough reviewers',
+        },
       ],
       endTime: 1501803756875,
-      message: "",
-      name: "/duti/src/duties/pr.spec.js",
+      message: '',
+      name: '/duti/src/duties/pr.spec.js',
       startTime: 1501803756531,
-      status: "passed",
-      summary: ""
+      status: 'passed',
+      summary: '',
     },
     {
       assertionResults: [
         {
           failureMessages: [],
-          status: "passed",
-          title: "runs the passed function"
-        }
+          status: 'passed',
+          title: 'runs the passed function',
+        },
       ],
       endTime: 1501803756926,
-      message: "",
-      name: "/duti/src/utils.spec.js",
+      message: '',
+      name: '/duti/src/utils.spec.js',
       startTime: 1501803756895,
-      status: "passed",
-      summary: ""
-    }
+      status: 'passed',
+      summary: '',
+    },
   ],
-  wasInterrupted: false
-};
+  wasInterrupted: false,
+}
 
 let failing = {
   numFailedTestSuites: 1,
@@ -106,7 +106,7 @@ let failing = {
     total: 0,
     unchecked: 0,
     unmatched: 0,
-    updated: 0
+    updated: 0,
   },
   startTime: 1501804154940,
   success: false,
@@ -115,65 +115,65 @@ let failing = {
       assertionResults: [
         {
           failureMessages: [],
-          status: "passed",
-          title: "fails if the description is empty"
+          status: 'passed',
+          title: 'fails if the description is empty',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "warns if there are too many additions"
+          status: 'passed',
+          title: 'warns if there are too many additions',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "warns if there are too many deletions"
+          status: 'passed',
+          title: 'warns if there are too many deletions',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "warns if there are too many additions and deletions"
+          status: 'passed',
+          title: 'warns if there are too many additions and deletions',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "fails if there is no assignee"
+          status: 'passed',
+          title: 'fails if there is no assignee',
         },
         {
           failureMessages: [],
-          status: "passed",
-          title: "warns if there are not enough reviewers"
-        }
+          status: 'passed',
+          title: 'warns if there are not enough reviewers',
+        },
       ],
       endTime: 1501804155537,
-      message: "",
-      name: "/duti/src/duties/pr.spec.js",
+      message: '',
+      name: '/duti/src/duties/pr.spec.js',
       startTime: 1501804155342,
-      status: "passed",
-      summary: ""
+      status: 'passed',
+      summary: '',
     },
     {
       assertionResults: [
         {
           failureMessages: [
-            'Error: \u001b[2mexpect(\u001b[22m\u001b[31mjest.fn()\u001b[39m\u001b[2m).not.toHaveBeenCalled(\u001b[22m\u001b[2m)\u001b[22m\n\nExpected mock function not to be called but it was called with:\n  \u001b[31m[""]\u001b[39m\n    at Object.it (/duti/src/utils.spec.js:10:20)\n    at Object.asyncFn (/duti/node_modules/jest-jasmine2/build/jasmine-async.js:68:30)\n    at resolve (/duti/node_modules/jest-jasmine2/build/queueRunner.js:38:12)\n    at Promise (<anonymous>)\n    at mapper (/duti/node_modules/jest-jasmine2/build/queueRunner.js:31:21)\n    at Promise.resolve.then.el (/duti/node_modules/p-map/index.js:42:16)\n    at <anonymous>'
+            'Error: \u001b[2mexpect(\u001b[22m\u001b[31mjest.fn()\u001b[39m\u001b[2m).not.toHaveBeenCalled(\u001b[22m\u001b[2m)\u001b[22m\n\nExpected mock function not to be called but it was called with:\n  \u001b[31m[""]\u001b[39m\n    at Object.it (/duti/src/utils.spec.js:10:20)\n    at Object.asyncFn (/duti/node_modules/jest-jasmine2/build/jasmine-async.js:68:30)\n    at resolve (/duti/node_modules/jest-jasmine2/build/queueRunner.js:38:12)\n    at Promise (<anonymous>)\n    at mapper (/duti/node_modules/jest-jasmine2/build/queueRunner.js:31:21)\n    at Promise.resolve.then.el (/duti/node_modules/p-map/index.js:42:16)\n    at <anonymous>',
           ],
-          status: "failed",
-          title: "runs the passed function"
-        }
+          status: 'failed',
+          title: 'runs the passed function',
+        },
       ],
       endTime: 1501804155663,
       message:
         '\u001b[1m\u001b[31m  \u001b[1m● \u001b[1mlog › runs the passed function\u001b[39m\u001b[22m\n\n    \u001b[2mexpect(\u001b[22m\u001b[31mjest.fn()\u001b[39m\u001b[2m).not.toHaveBeenCalled(\u001b[22m\u001b[2m)\u001b[22m\n    \n    Expected mock function not to be called but it was called with:\n      \u001b[31m[""]\u001b[39m\n\u001b[2m      \n      \u001b[2mat Object.it (\u001b[2m\u001b[0m\u001b[36msrc/utils.spec.js\u001b[39m\u001b[0m\u001b[2m:10:20)\u001b[2m\n          at Promise (<anonymous>)\n      \u001b[2mat Promise.resolve.then.el (\u001b[2m\u001b[0m\u001b[36mnode_modules/p-map/index.js\u001b[39m\u001b[0m\u001b[2m:42:16)\u001b[2m\n          at <anonymous>\u001b[22m\n',
-      name: "/duti/src/utils.spec.js",
+      name: '/duti/src/utils.spec.js',
       startTime: 1501804155556,
-      status: "failed",
-      summary: ""
-    }
+      status: 'failed',
+      summary: '',
+    },
   ],
-  wasInterrupted: false
-};
+  wasInterrupted: false,
+}
 
 module.exports = {
   passing,
-  failing
-};
+  failing,
+}

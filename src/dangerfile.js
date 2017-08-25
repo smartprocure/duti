@@ -1,9 +1,9 @@
 /* global danger fail warn schedule message */
-let _ = require("lodash/fp");
-let Promise = require("bluebird");
-let config = require("./config");
-let duties = require("./duties");
-let { getLintResults, getTestResults, log } = require("./utils");
+let _ = require('lodash/fp')
+let Promise = require('bluebird')
+let config = require('./config')
+let duties = require('./duties')
+let { getLintResults, getTestResults, log } = require('./utils')
 
 schedule(async () =>
   Promise.all(
@@ -14,7 +14,7 @@ schedule(async () =>
       config,
       message: log(message),
       lintResults: await getLintResults({ config }),
-      testResults: await getTestResults({ config })
+      testResults: await getTestResults({ config }),
     })
   )
-);
+)
