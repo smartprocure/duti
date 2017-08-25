@@ -21,6 +21,9 @@ jobs:
           name: test
           command: npm run test:ci
       - run:
+          name: pre-danger
+          command: git config user.email "danger@smartprocure.us" && git config user.name "Decrapifier" && git config push.default matching
+      - run:
           name: danger
           command: npm run danger
           when: always
