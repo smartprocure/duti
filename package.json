@@ -17,6 +17,7 @@
     "lint": "eslint ./**/*.js",
     "lint:ci": "npm run lint -- -o lint-results.json -f json",
     "danger": "./bin/duti",
+    "duti:fix": "npm run lint -- --fix && npm run fmt",
     "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma es5"
   },
   "eslintConfig": {
@@ -34,6 +35,7 @@
     "danger": "^1.1.0",
     "futil-js": "^1.27.0",
     "lodash": "^4.17.4",
+    "nodegit": "^0.20.1",
     "pkg-up": "^2.0.0",
     "strip-ansi": "^4.0.0"
   },
