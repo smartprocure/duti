@@ -16,7 +16,7 @@ let autoFix = async ({ message }) => {
 
     if (hasModifiedFiles) {
       execSync(
-        'git commit -am "Automagically formatted by Duti!\n\nhttps://github.com/smartprocure/duti" && git push',
+        'git config user.email "danger@smartprocure.us" && git config user.name "Decrapifier" && git commit -am "Automagically formatted by Duti!\n\nhttps://github.com/smartprocure/duti" && git push',
       )
       message(
         'We were able to automatically fix some formatting issues in this PR for you!',
