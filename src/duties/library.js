@@ -9,7 +9,7 @@ let emptyChangelog = ({ danger, fail }) => {
 let versionBump = async ({ danger, fail }) => {
   let versionChanged = _.includes(
     'version',
-    _.get('diff', await danger.git.diffForFile('package.json'))
+    _.get('diff', await danger.git.diffForFile('package.json')),
   )
   if (!versionChanged) {
     fail('The version was not updated. Please update the version.')

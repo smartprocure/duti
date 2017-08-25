@@ -13,7 +13,7 @@ let log = _.curry(
   (fn, str) =>
     (process.env.NODE_ENV !== 'test' &&
       console.log(`[${`${fn.name}`.toUpperCase()}] ${str}`)) ||
-    fn(str)
+    fn(str),
 )
 
 let readFileIfExists = async path =>
@@ -28,17 +28,19 @@ let readJsonFile = async filePath =>
 
 let readLocalJsonFile = file => async dir =>
   fileToJson(
-    await readFileIfExists(path.resolve(await getRunningDirectory(), dir, file))
+    await readFileIfExists(
+      path.resolve(await getRunningDirectory(), dir, file),
+    ),
   )
 
 let getLintResults = _.flow(
   _.get('config.lintResultsPath'),
-  readLocalJsonFile('lint-results.json')
+  readLocalJsonFile('lint-results.json'),
 )
 
 let getTestResults = _.flow(
   _.get('config.testResultsPath'),
-  readLocalJsonFile('test-results.json')
+  readLocalJsonFile('test-results.json'),
 )
 
 module.exports = {
