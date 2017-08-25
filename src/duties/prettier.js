@@ -1,0 +1,56 @@
+let fs = require('fs')
+let path = require('path')
+let Promise = require('bluebird')
+let _ = require('lodash/fp')
+let prettier = require('prettier')
+let { fileToString } = require('../utils')
+
+Promise.promisifyAll(fs)
+
+let prettierCfg = { semi: false, singleQuote: true, trailingComma: 'all' }
+
+let notPrettierErrorTemplate = async file => `
+  <details>
+    <summary><code>${file.path}</code></summary>
+    Here it is Prettified:
+
+    <pre>
+      ${file.corrected}
+    </pre>
+  </details>
+`
+
+let detectPrettier = async ({ danger, warn }) => {
+  let allJsFiles = _.filter(
+    p => /\.jsx?$/g.test(path.extname(p)),
+    _.concat(danger.git.created_files, danger.git.modified_files),
+  )
+  if (allJsFiles.length) {
+    let uglyFiles = await _.flow(
+      _.filter(async p => prettier.check(await fileToString(p), prettierCfg)),
+    )(allJsFiles)
+    if (uglyFiles.length) {
+      let n = _.map(async f => {
+        let contents = await fileToString(f)
+        console.log(f)
+        return {
+          path: f,
+          contents,
+          corrected: prettier.format(f, prettierCfg),
+        }
+      }, uglyFiles)
+      warn(`Some files were not formatted using Prettier. Please run prettier on them.
+${_.join(
+        await Promise.resolve(
+          Promise.all(_.map(notPrettierErrorTemplate, n)),
+          '\n',
+        ),
+      )}
+      `)
+    }
+  }
+}
+
+module.exports = {
+  detectPrettier,
+}

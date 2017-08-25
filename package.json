@@ -2,9 +2,9 @@
   "name": "duti",
   "description": "Danger UTIlities",
   "bin": {
-    "duti": "bin/duti.js"
+    "duti": "bin/duti"
   },
-  "version": "0.3.0",
+  "version": "0.3.2",
   "main": "src/index.js",
   "license": "MIT",
   "engines": {
@@ -16,7 +16,7 @@
     "test:ci": "npm t -- --coverage --json --outputFile=test-results.json",
     "lint": "eslint ./**/*.js",
     "lint:ci": "npm run lint -- -o lint-results.json -f json",
-    "danger": "./bin/duti.js",
+    "danger": "./bin/duti",
     "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma all"
   },
   "eslintConfig": {

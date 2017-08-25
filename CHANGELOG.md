@@ -1,3 +1,11 @@
+## 0.3.2
+
+- Fix issue with NPM not finding `bin/duti.js`
+
+## 0.3.1
+
+- Fix issue when running `duti` as a binary and it fails spawning the danger process.
+
 ## 0.3.0
 
 - Fail on not changing the following:
