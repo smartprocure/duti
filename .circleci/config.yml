@@ -5,6 +5,9 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "76:ba:f6:b5:1f:73:72:c8:3d:71:6a:0f:e3:08:ab:61"
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -14,9 +17,6 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules\
-      - add_ssh_keys:
-          fingerprints:
-            - "76:ba:f6:b5:1f:73:72:c8:3d:71:6a:0f:e3:08:ab:61"
       - run:
           name: lint
           command: npm run lint:ci
@@ -25,7 +25,7 @@ jobs:
           command: npm run test:ci
       - run:
           name: pre-danger
-          command: git config user.email "danger@smartprocure.us" && git config user.name "Decrapifier" && git config push.default matching
+          command: git config user.email "drodriguez@smartprocure.us" && git config user.name "Decrapifier" && git config push.default matching
       - run:
           name: danger
           command: npm run danger
