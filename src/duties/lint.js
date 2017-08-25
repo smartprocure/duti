@@ -19,7 +19,7 @@ let formatLint = severity =>
   _.flow(
     _.filter(lint => _.some({ severity }, lint.messages)),
     _.map(lintTemplate(severity)),
-    _.join('')
+    _.join(''),
   )
 
 let hasLintErrors = ({ lintResults, fail }) => {
@@ -33,7 +33,7 @@ let hasLintWarnings = ({ lintResults, warn }) => {
   if (_.sumBy('warningCount', lintResults) > 0) {
     warn(
       `Your PR has lint warnings. Please consider fixing these.
-      ${formatLint(1)(lintResults)}`
+      ${formatLint(1)(lintResults)}`,
     )
   }
 }
