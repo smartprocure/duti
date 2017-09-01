@@ -1,3 +1,8 @@
+## 0.5.0
+
+- Fix parsing standard-json eslint outputs
+- Add ability to automatically format PRs and push to them
+
 ## 0.4.0
 
 - Reduce default configuration of recommended reviewers to 1

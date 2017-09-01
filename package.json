@@ -4,7 +4,7 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "src/index.js",
   "license": "MIT",
   "engines": {

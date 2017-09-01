@@ -143,8 +143,50 @@ let warning = [
   },
 ]
 
+let standardJsonFailing = [
+  {
+    filePath: '/home/flet/code/something-great/bin.js',
+    messages: [
+      {
+        line: '19',
+        column: '21',
+        message: 'Missing space before function parentheses.',
+      },
+    ],
+  },
+  {
+    filePath: '/home/flet/code/something-great/index.js',
+    messages: [
+      {
+        line: '6',
+        column: '35',
+        message: 'Strings must use singlequote.',
+      },
+      {
+        line: '6',
+        column: '51',
+        message: 'Extra semicolon.',
+      },
+      {
+        line: '17',
+        column: '5',
+        message: 'Keyword "if" must be followed by whitespace.',
+      },
+      {
+        line: '22',
+        column: '28',
+        message: 'Extra semicolon.',
+      },
+    ],
+  },
+]
+
+let standardJsonPassing = []
+
 module.exports = {
   passing,
   failing,
   warning,
+  standardJsonFailing,
+  standardJsonPassing,
 }

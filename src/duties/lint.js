@@ -1,6 +1,5 @@
 let _ = require('lodash/fp')
 let { basename } = require('path')
-let { log } = require('../utils')
 
 let messageTemplate = message => `
   <strong>${message.message}</strong>
@@ -23,7 +22,18 @@ let formatLint = severity =>
   )
 
 let hasLintErrors = ({ lintResults, fail }) => {
-  if (_.sumBy('errorCount', lintResults) > 0) {
+  let isStandardOutput = _.flow(
+    _.filter('messages'),
+    _.filter(['errorCount', 0]),
+    _.isEmpty
+  )(lintResults)
+
+  if (isStandardOutput) {
+    if (lintResults.length > 0) {
+      fail(`Your PR has lint errors. Please fix these and commit them.
+        ${formatLint(2)(lintResults)}`)
+    }
+  } else if (_.sumBy('errorCount', lintResults) > 0) {
     fail(`Your PR has lint errors. Please fix these and commit them.
       ${formatLint(2)(lintResults)}`)
   }

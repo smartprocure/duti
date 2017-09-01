@@ -30,4 +30,22 @@ describe('lint results', () => {
     expect(warn).not.toHaveBeenCalled()
     expect(fail).not.toHaveBeenCalled()
   })
+
+  describe('Standard JSON', () => {
+    it('passes if there arent any messages', () => {
+      let fail = jest.fn()
+      let lintResults = lintHelpers.standardJsonPassing
+      lint.hasLintErrors({ lintResults, fail })
+
+      expect(fail).not.toHaveBeenCalled()
+    })
+
+    it('fails if there are any messages', () => {
+      let fail = jest.fn()
+      let lintResults = lintHelpers.standardJsonFailing
+      lint.hasLintErrors({ lintResults, fail })
+
+      expect(fail).toHaveBeenCalled()
+    })
+  })
 })
