@@ -3,8 +3,9 @@ let { basename } = require('path')
 
 let messageTemplate = message => `
   <strong>${message.message}</strong>
-  <code>Line ${message.line}${message.source &&
-  `: ${message.source.trim()}`}</code>`
+  <code>Line ${message.line}${message.source
+  ? `: ${message.source.trim()}`
+  : ''}</code>`
 
 let formatLintMessages = _.flow(_.map(messageTemplate), _.join('\n'))
 
