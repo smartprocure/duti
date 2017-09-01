@@ -3,7 +3,8 @@ let { basename } = require('path')
 
 let messageTemplate = message => `
   <strong>${message.message}</strong>
-  <code>Line ${message.line}: ${message.source.trim()}</code>`
+  <code>Line ${message.line}${message.source &&
+  `: ${message.source.trim()}`}</code>`
 
 let formatLintMessages = _.flow(_.map(messageTemplate), _.join('\n'))
 
@@ -11,7 +12,9 @@ let lintTemplate = severity => lint => `
 <details>
   <summary>${basename(lint.filePath)}</summary>
   <p>Full Path: <code>${lint.filePath}</code></p>
-  ${formatLintMessages(_.filter({ severity }, lint.messages))}
+  ${formatLintMessages(
+    severity ? _.filter({ severity }, lint.messages) : lint.messages
+  )}
 </details>`
 
 let formatLint = severity =>
@@ -20,6 +23,8 @@ let formatLint = severity =>
     _.map(lintTemplate(severity)),
     _.join('')
   )
+
+let formatStandardJSLint = _.flow(_.map(lintTemplate()), _.join(''))
 
 let hasLintErrors = ({ lintResults, fail }) => {
   let isStandardOutput = _.flow(
@@ -31,7 +36,7 @@ let hasLintErrors = ({ lintResults, fail }) => {
   if (isStandardOutput) {
     if (lintResults.length > 0) {
       fail(`Your PR has lint errors. Please fix these and commit them.
-        ${formatLint(2)(lintResults)}`)
+        ${formatStandardJSLint(lintResults)}`)
     }
   } else if (_.sumBy('errorCount', lintResults) > 0) {
     fail(`Your PR has lint errors. Please fix these and commit them.
