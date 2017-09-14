@@ -1,3 +1,7 @@
+## 0.6.0
+
+- Add ability to disallow strings in PR descriptions
+
 ## 0.5.0
 
 - Fix parsing standard-json eslint outputs

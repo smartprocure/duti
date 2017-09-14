@@ -91,4 +91,11 @@ describe('Pull Request', () => {
     pr.netNegativePR({ danger, message })
     expect(message).not.toHaveBeenCalled()
   })
+
+  it('fails the PR if an unallowed string is present in the issue description', () => {
+    let danger = { github: { pr: { body: 'Fixes #ISSUEID' } } }
+    let fail = jest.fn()
+    pr.disallowedDescription({ danger, fail, config })
+    expect(fail).toHaveBeenCalled()
+  })
 })

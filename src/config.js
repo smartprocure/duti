@@ -3,4 +3,5 @@ module.exports = {
   recommendedPrReviewers: 1,
   lintResultsPath: '.',
   testResultsPath: '.',
+  disallowedStrings: ['#ISSUEID'],
 }
