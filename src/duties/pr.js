@@ -1,4 +1,5 @@
 let _ = require('lodash/fp')
+let { toSentence } = require('underscore.string')
 let { log } = require('../utils')
 
 let prAssignee = ({ danger, fail }) => {
@@ -49,11 +50,17 @@ let requestedReviewers = ({
 
 let disallowedDescription = ({ danger, fail, config }) => {
   let { github: { pr: { body } } } = danger
-  if (_.some(s => _.contains(s, body), config.disallowedStrings)) {
-    fail(`The PR description contains a mistake. Here's a list of disallowed phrases/strings:
-
-${_.flow(_.map(s => `- ${s}`), _.join('\n'))(config.disallowedStrings)}
-`)
+  let failedChecks = _.filter(
+    s => _.contains(s, body),
+    config.disallowedStrings
+  )
+  if (failedChecks.length) {
+    fail(
+      `The PR description contains the following disallowed ${failedChecks.length >
+      1
+        ? 'phrases'
+        : 'phrase'}: ${toSentence(failedChecks)}`
+    )
   }
 }
 
