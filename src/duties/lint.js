@@ -35,7 +35,7 @@ let hasLintErrors = ({ lintResults, fail }) => {
   )(lintResults)
 
   if (isStandardOutput) {
-    if (lintResults.length > 0) {
+    if (lintResults && lintResults.length > 0) {
       fail(`Your PR has lint errors. Please fix these and commit them.
         ${formatStandardJSLint(lintResults)}`)
     }

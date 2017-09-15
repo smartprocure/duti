@@ -1,12 +1,24 @@
 /* global danger fail warn schedule message */
 let _ = require('lodash/fp')
 let Promise = require('bluebird')
-let config = require('./config')
+let cosmiconfig = require('cosmiconfig')
+let defaultConfig = require('../duti.config')
 let duties = require('./duties')
 let { getLintResults, getTestResults, log } = require('./utils')
 
-schedule(async () =>
-  Promise.all(
+let explorer = cosmiconfig('duti', { rcExtensions: true })
+
+schedule(async () => {
+  let userConfig
+  try {
+    userConfig = await explorer.load()
+  } catch (e) {
+    throw new Error(e)
+  }
+
+  let config = userConfig || defaultConfig
+
+  return Promise.all(
     _.over(_.values(duties))({
       danger,
       fail: log(fail),
@@ -17,4 +29,4 @@ schedule(async () =>
       testResults: await getTestResults({ config }),
     })
   )
-)
+})
