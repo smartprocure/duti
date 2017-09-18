@@ -1,3 +1,7 @@
+## 0.7.0
+
+- Add configuration support
+
 ## 0.6.0
 
 - Add ability to disallow strings in PR descriptions
