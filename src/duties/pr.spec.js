@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 let pr = require('./pr')
-let config = require('../config')
+let config = require('../../.dutirc.json')
 
 describe('Pull Request', () => {
   it('fails if the description is empty', () => {
