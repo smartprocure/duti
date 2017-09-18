@@ -14,7 +14,7 @@
     "test": "jest",
     "test:watch": "npm t -- --watch",
     "test:ci": "npm t -- --coverage --json --outputFile=test-results.json",
-    "lint": "eslint ./**/*.js",
+    "lint": "eslint . --ignore-path .gitignore",
     "lint:ci": "npm run lint -- -o lint-results.json -f json",
     "danger": "./bin/duti",
     "duti:fix": "npm run lint -- --fix && npm run fmt",

@@ -1,6 +1,5 @@
 let _ = require('lodash/fp')
 let { toSentence } = require('underscore.string')
-let { log } = require('../utils')
 
 let prAssignee = ({ danger, fail }) => {
   if (!danger.github.pr.assignee) {
