@@ -6,27 +6,18 @@ let defaultConfig = require('../.dutirc.json')
 let duties = require('./duties')
 let { getLintResults, getTestResults, log } = require('./utils')
 
-let explorer = cosmiconfig('duti', { rcExtensions: true, sync: true })
+let explorer = cosmiconfig('duti', { rcExtensions: true })
 
 schedule(async () => {
   let userConfig
   try {
-    // eslint-disable-next-line no-console
-    console.log(typeof process.cwd())
-    userConfig = await explorer.load(process.cwd())
+    let { config } = await explorer.load(process.cwd())
+    userConfig = config
   } catch (e) {
     throw new Error(e)
   }
 
-  // eslint-disable-next-line no-console
-  console.log(
-    userConfig ? 'Using user configuration' : 'Using default configuration'
-  )
-
   let config = userConfig || defaultConfig
-
-  // eslint-disable-next-line no-console
-  console.log(config)
 
   return Promise.all(
     _.over(_.values(duties))({

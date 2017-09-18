@@ -17,13 +17,11 @@ let autoFix = async ({ message }) => {
     })
     if (modifiedFiles.length) {
       _.each(file => {
-        // eslint-disable-next-line no-console
-        console.log(file.path())
-        // execSync(`git add ${file.path()}`)
+        execSync(`git add ${file.path()}`)
       }, modifiedFiles)
-      // execSync(
-      //   'git commit -m "Automagically formatted by Duti!\n\nhttps://github.com/smartprocure/duti" && git push'
-      // )
+      execSync(
+        'git commit -m "Automagically formatted by Duti!\n\nhttps://github.com/smartprocure/duti" && git push'
+      )
       message(
         'We were able to automatically fix some formatting issues in this PR for you!'
       )
