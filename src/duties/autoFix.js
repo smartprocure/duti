@@ -1,5 +1,6 @@
 let _ = require('lodash/fp')
 let Git = require('nodegit')
+let path = require('path')
 let { execSync } = require('child_process')
 let { Repository } = Git
 let { getRunningDirectory } = require('../utils')
@@ -12,9 +13,9 @@ let autoFix = async ({ message, config }) => {
     let statuses = await Repo.getStatus()
 
     let modifiedFiles = statuses.filter(file => {
-      let path = file.path()
-      let isJsFile = config.autoFix.extensions.some(ext =>
-        new RegExp(`.*.${ext}$`).test(path)
+      let filePath = file.path()
+      let isJsFile = config.autoFix.extensions.some(
+        ext => ext === path.extname(filePath)
       )
       return !!file.isModified() && isJsFile
     })

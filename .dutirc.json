@@ -5,6 +5,6 @@
   "testResultsPath": ".",
   "disallowedStrings": ["#ISSUEID"],
   "autoFix": {
-    "extensions": ["js"]
+    "extensions": [".js"]
   }
 }
