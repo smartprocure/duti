@@ -4,7 +4,7 @@ let { execSync } = require('child_process')
 let { Repository } = Git
 let { getRunningDirectory } = require('../utils')
 
-let autoFix = async ({ message }) => {
+let autoFix = async ({ message, config }) => {
   try {
     execSync('npm run duti:fix')
     let repoDir = `${await getRunningDirectory()}/.git`
@@ -12,7 +12,9 @@ let autoFix = async ({ message }) => {
     let statuses = await Repo.getStatus()
 
     let modifiedFiles = statuses.filter(file => {
-      let isJsFile = /.*.js$/.test(file.path())
+      let isJsFile = config.autoFix.extensions.every(ext =>
+        new RegExp(`/.*.${ext}$/`).test(file.path())
+      )
       return !!file.isModified() && isJsFile
     })
     if (modifiedFiles.length) {
