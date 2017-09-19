@@ -12,8 +12,9 @@ let autoFix = async ({ message, config }) => {
     let statuses = await Repo.getStatus()
 
     let modifiedFiles = statuses.filter(file => {
+      let path = file.path()
       let isJsFile = config.autoFix.extensions.some(ext =>
-        new RegExp(`/.*.${ext}$/`).test(file.path())
+        new RegExp(`.*.${ext}$`).test(path)
       )
       return !!file.isModified() && isJsFile
     })
