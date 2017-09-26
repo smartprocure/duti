@@ -25,14 +25,10 @@ jobs:
           command: npm run test:ci
       - run:
           name: pre-danger
-          command: git config user.email "drodriguez@smartprocure.us" && git config user.name "Decrapifier" && git config push.default matching
+          command: git config user.email "drodriguez@smartprocure.us" && git config user.name "Decrapifier" && git config push.default simple
       - run:
           name: danger
-          command: |
-            if [ "${CIRCLE_BRANCH}" != "master" ]; then
-              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-              npm run danger
-            fi
+          command: npm run danger
           when: always
       - deploy:
           name: Maybe Deploy
