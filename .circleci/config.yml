@@ -28,7 +28,11 @@ jobs:
           command: git config user.email "drodriguez@smartprocure.us" && git config user.name "Decrapifier" && git config push.default matching
       - run:
           name: danger
-          command: npm run danger
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+              npm run danger
+            fi
           when: always
       - deploy:
           name: Maybe Deploy
