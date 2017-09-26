@@ -1,3 +1,7 @@
+## 0.6.2
+
+- Fix autofix pushing to undesired branches
+
 ## 0.6.1
 
 - Fix lint results erroring if there are none
