@@ -27,7 +27,11 @@ let formatLint = severity =>
 
 let formatStandardJSLint = _.flow(_.map(lintTemplate()), _.join(''))
 
-let hasLintErrors = ({ lintResults, fail }) => {
+let hasLintErrors = ({ lintResults, fail, message }) => {
+  if (_.isNil(lintResults)) {
+    message('Could not find any lint results')
+    return
+  }
   let isStandardOutput = _.flow(
     _.filter('messages'),
     _.filter(['errorCount', 0]),
@@ -45,7 +49,11 @@ let hasLintErrors = ({ lintResults, fail }) => {
   }
 }
 
-let hasLintWarnings = ({ lintResults, warn }) => {
+let hasLintWarnings = ({ lintResults, warn, message }) => {
+  if (_.isNil(lintResults)) {
+    message('Could not find any lint results')
+    return
+  }
   if (_.sumBy('warningCount', lintResults) > 0) {
     warn(
       `Your PR has lint warnings. Please consider fixing these.

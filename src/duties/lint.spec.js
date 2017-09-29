@@ -4,6 +4,19 @@ let lint = require('./lint')
 let lintHelpers = require('../test-data/lint-results')
 
 describe('lint results', () => {
+  it('allows lint results to be undefined', () => {
+    let fail = jest.fn()
+    let warn = jest.fn()
+    let message = jest.fn()
+    let lintResults = undefined
+    lint.hasLintErrors({ lintResults, fail, message })
+    lint.hasLintWarnings({ lintResults, warn, message })
+
+    expect(fail).not.toHaveBeenCalled()
+    expect(warn).not.toHaveBeenCalled()
+    expect(message).toHaveBeenCalled()
+  })
+
   it('fails if they have errors', () => {
     let fail = jest.fn()
     let lintResults = lintHelpers.failing

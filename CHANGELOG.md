@@ -3,6 +3,14 @@
 - Add configuration support
 - Fix autofixer duti committing non-js files
 
+## 0.6.2
+
+- Fix autofix publishing to unintended branches
+
+## 0.6.1
+
+- Fix lint results erroring if there are none
+
 ## 0.6.0
 
 - Add ability to disallow strings in PR descriptions
