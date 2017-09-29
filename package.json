@@ -4,7 +4,7 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.6.2",
+  "version": "0.7.0",
   "main": "src/index.js",
   "license": "MIT",
   "engines": {
@@ -14,7 +14,7 @@
     "test": "jest",
     "test:watch": "npm t -- --watch",
     "test:ci": "npm t -- --coverage --json --outputFile=test-results.json",
-    "lint": "eslint ./**/*.js",
+    "lint": "eslint . --ignore-path .gitignore",
     "lint:ci": "npm run lint -- -o lint-results.json -f json",
     "danger": "./bin/duti",
     "duti:fix": "npm run lint -- --fix && npm run fmt",
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.0",
+    "cosmiconfig": "^2.2.2",
     "danger": "^1.1.0",
     "futil-js": "^1.27.0",
     "lodash": "^4.17.4",

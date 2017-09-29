@@ -1,3 +1,8 @@
+## 0.7.0
+
+- Add configuration support
+- Fix autofixer duti committing non-js files
+
 ## 0.6.2
 
 - Fix autofix publishing to unintended branches

@@ -1,0 +1,10 @@
+{
+  "prNetChangeThreshold": 500,
+  "recommendedPrReviewers": 1,
+  "lintResultsPath": ".",
+  "testResultsPath": ".",
+  "disallowedStrings": ["#ISSUEID"],
+  "autoFix": {
+    "extensions": [".js"]
+  }
+}
