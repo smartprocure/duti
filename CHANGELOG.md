@@ -1,3 +1,7 @@
+## 0.7.1
+
+- Fix default configuration not loading properly
+
 ## 0.7.0
 
 - Add configuration support
