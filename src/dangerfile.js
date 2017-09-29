@@ -9,15 +9,15 @@ let { getLintResults, getTestResults, log } = require('./utils')
 let explorer = cosmiconfig('duti', { rcExtensions: true })
 
 schedule(async () => {
-  let userConfig
+  let dutiConfig
   try {
     let { config } = await explorer.load(process.cwd())
-    userConfig = config
+    dutiConfig = config
   } catch (e) {
-    throw new Error(e)
+    dutiConfig = defaultConfig
   }
 
-  let config = userConfig || defaultConfig
+  let config = dutiConfig
 
   return Promise.all(
     _.over(_.values(duties))({

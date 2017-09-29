@@ -4,4 +4,4 @@ let testResults = require('./testResults')
 let library = require('./library')
 let autoFix = require('./autoFix')
 
-module.exports = Object.assign({}, pr, lint, testResults, library, autoFix)
+module.exports = Object.assign({}, pr, lint, testResults, library)
