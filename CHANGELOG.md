@@ -1,3 +1,7 @@
+## 0.7.2
+
+- Fix bug where adding a `CHANGELOG.md` file fails changelog checking
+
 ## 0.7.1
 
 - Fix default configuration not loading properly

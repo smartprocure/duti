@@ -15,6 +15,13 @@ describe('emptyChangelog', () => {
     emptyChangelog({ danger, fail })
     expect(fail).not.toHaveBeenCalled()
   })
+
+  it('doesnt fail if there was an added changelog file', () => {
+    let fail = jest.fn()
+    let danger = { git: { added_files: ['CHANGELOG.md'] } }
+    emptyChangelog({ danger, fail })
+    expect(fail).not.toHaveBeenCalled()
+  })
 })
 
 describe('versionBump', () => {
