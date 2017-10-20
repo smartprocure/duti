@@ -5,7 +5,7 @@ let { execSync } = require('child_process')
 let { Repository } = Git
 let { getRunningDirectory } = require('../utils')
 
-let autoFix = async ({ message, config }) => {
+let autoFix = async ({ message, config, warn }) => {
   try {
     execSync('npm run duti:fix')
     let repoDir = `${await getRunningDirectory()}/.git`
@@ -33,7 +33,11 @@ let autoFix = async ({ message, config }) => {
       message('Awesome! Thanks for the well-formatted PR!')
     }
   } catch (e) {
-    message('No `duti:fix` npm script found. Not autofixing this PR.')
+    if (_.includes('missing script: duti:fix', e.message))
+      message('No `duti:fix` npm script found. Not autofixing this PR.')
+    else {
+      warn('Could not run `duti:fix` command successfully')
+    }
   }
 }
 
