@@ -1,3 +1,7 @@
+## 0.7.2
+
+- Show proper error messages for failed autofix depending on reason
+
 ## 0.7.1
 
 - Fix default configuration not loading properly
