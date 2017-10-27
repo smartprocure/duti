@@ -18,8 +18,6 @@ let hasBrowserErrors = ({ browserResults, fail, message }) => {
     if (failed > 0) {
       let failedTests = []
       _.flow(
-        // Get result for each test suite.
-        _.mapValues(r => r),
         // Flatten test results into one array.
         _.reduce((flattened, other) => {
           return flattened.concat(other)
