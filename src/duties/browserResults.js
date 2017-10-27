@@ -10,8 +10,8 @@ let hasBrowserErrors = ({ browserResults, fail, message }) => {
 
   if (result && summary) {
     let { error, failed, exitCode } = summary
-    if (false === error && 0 === failed && 0 === exitCode) {
       message('Your PR has no browser errors.  Great job!')
+    if (error === false && failed === 0 && exitCode === 0) {
       return
     }
 
