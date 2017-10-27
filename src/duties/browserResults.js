@@ -23,20 +23,14 @@ let hasBrowserErrors = ({ browserResults, fail, message }) => {
           return flattened.concat(other)
         }, failedTests),
         // Filter by failed tests.
-        _.filter(testResult => {
-          return false === testResult.success
-        }),
+        _.reject({ success: true }),
         // Format error log.
         _.map(
           f => `\nSuite: ${f.suite}\nDescription: ${f.description}\n${f.log}\n`
         ),
-        allFailures => {
-          fail(
-            [`Your PR has ${failed} failed browser tests:`]
-              .concat(allFailures)
-              .join('\n')
-          )
-        }
+        _.concat([`Your PR has ${failed} failed browser tests:`]),
+        _.join('\n'),
+        fail
       )(result)
       return
     }
