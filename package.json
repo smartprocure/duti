@@ -30,6 +30,11 @@
       "sourceType": "module"
     }
   },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "es5"
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "cosmiconfig": "^2.2.2",
