@@ -6,6 +6,10 @@
   },
   "version": "0.7.1",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/smartprocure/duti.git"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=8.0.0"
