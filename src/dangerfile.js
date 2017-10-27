@@ -4,7 +4,12 @@ let Promise = require('bluebird')
 let cosmiconfig = require('cosmiconfig')
 let defaultConfig = require('../.dutirc.json')
 let duties = require('./duties')
-let { getLintResults, getTestResults, log } = require('./utils')
+let {
+  getLintResults,
+  getTestResults,
+  getBrowserResults,
+  log,
+} = require('./utils')
 
 let explorer = cosmiconfig('duti', { rcExtensions: true })
 
@@ -28,6 +33,7 @@ schedule(async () => {
       message: log(message),
       lintResults: await getLintResults({ config }),
       testResults: await getTestResults({ config }),
+      browserResults: await getBrowserResults({ config }),
     })
   )
 })
