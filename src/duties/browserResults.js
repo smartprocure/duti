@@ -18,9 +18,7 @@ let hasBrowserErrors = ({ browserResults, fail, message }) => {
     if (failed > 0) {
       _.flow(
         // Flatten test results into one array.
-        _.reduce((flattened, other) => {
-          return flattened.concat(other)
-        }, []),
+        _.reduce((flattened, other) => flattened.concat(other), []),
         // Filter by failed tests.
         _.reject({ success: true }),
         // Format error log.
