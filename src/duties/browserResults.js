@@ -10,8 +10,8 @@ let hasBrowserErrors = ({ browserResults, fail, message }) => {
 
   if (result && summary) {
     let { error, failed, exitCode } = summary
-      message('Your PR has no browser errors.  Great job!')
     if (error === false && failed === 0 && exitCode === 0) {
+      message('Your PR has no browser errors. Great job!')
       return
     }
 
@@ -36,10 +36,10 @@ let hasBrowserErrors = ({ browserResults, fail, message }) => {
     }
 
     // All other cases: error is not false, exitCode is not 0 etc.
-    fail('Browser test error.  Please see CI logs for more details.')
+    fail('Browser test error. Please see CI logs for more details.')
   } else {
     message(
-      'Incorrect browser result format.  Please see CI logs for more details.'
+      'Incorrect browser result format. Please see CI logs for more details.'
     )
   }
 }
