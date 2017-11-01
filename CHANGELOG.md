@@ -1,3 +1,8 @@
+## 0.8.0
+
+- Add browser test result parser (karma).
+- Add prettier configuration.
+
 ## 0.7.1
 
 - Fix default configuration not loading properly

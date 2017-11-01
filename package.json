@@ -4,8 +4,12 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.7.1",
+  "version": "0.8.0",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/smartprocure/duti.git"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=8.0.0"
@@ -29,6 +33,11 @@
       "ecmaVersion": 8,
       "sourceType": "module"
     }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "es5"
   },
   "dependencies": {
     "bluebird": "^3.5.0",

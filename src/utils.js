@@ -41,12 +41,18 @@ let getTestResults = _.flow(
   readLocalJsonFile('test-results.json')
 )
 
+let getBrowserResults = _.flow(
+  _.get('config.browserResultsPath'),
+  readLocalJsonFile('browser-results.json')
+)
+
 module.exports = {
   log,
   fileToJson,
   getLintResults,
   readFileIfExists,
   getTestResults,
+  getBrowserResults,
   getRunningDirectory,
   readJsonFile,
 }
