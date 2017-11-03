@@ -1,3 +1,8 @@
+## 0.9.0
+
+- Removen node-git depdency
+- Commit all modified files on an autofix instead of specific file types
+
 ## 0.8.0
 
 - Add browser test result parser (karma).

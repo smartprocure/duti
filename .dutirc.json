@@ -4,8 +4,5 @@
   "lintResultsPath": ".",
   "testResultsPath": ".",
   "browserResultsPath": ".",
-  "disallowedStrings": ["#ISSUEID"],
-  "autoFix": {
-    "extensions": [".js"]
-  }
+  "disallowedStrings": ["#ISSUEID"]
 }
