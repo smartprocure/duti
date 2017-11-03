@@ -13,9 +13,13 @@ let autoFix = async ({ message }) => {
     message(
       'We were able to automatically fix some formatting issues in this PR for you!'
     )
-  } catch (e) {
+  } catch (err) {
     // eslint-disable-next-line
-    console.log(e)
+    console.log(
+      'Probably failed because it was pushing no changes. Error here:'
+    )
+    // eslint-disable-next-line
+    console.log({ err })
   }
 }
 
