@@ -27,9 +27,8 @@ let readJsonFile = async filePath =>
   fileToJson(await readFileIfExists(filePath))
 
 let readLocalJsonFile = file => async dir => {
-  let contents = await fs.readFileAsync(
-    path.resolve(await getRunningDirectory(), dir, file),
-    'utf8'
+  let contents = await readFileIfExists(
+    path.resolve(await getRunningDirectory(), dir, file)
   )
   try {
     return fileToJson(contents)
