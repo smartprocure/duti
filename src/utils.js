@@ -33,7 +33,7 @@ let readLocalJsonFile = file => async dir => {
   try {
     return fileToJson(contents)
   } catch (e) {
-    console.log({ contents })
+    console.info({ contents })
     throw new Error(contents)
   }
 }
