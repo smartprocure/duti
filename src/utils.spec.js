@@ -36,14 +36,6 @@ describe('getLintResults', () => {
     })
     expect(result).toBeDefined()
   })
-
-  it("shows contents if couldn't parse", async () => {
-    expect(async () => {
-      await getLintResults({
-        config: { lintResultsPath: './src/test-data/bad-path' },
-      })
-    }).toThrow()
-  })
 })
 
 describe('getTestResults', () => {
