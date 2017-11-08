@@ -26,10 +26,17 @@ let getRunningDirectory = async () => path.dirname(await pkgup())
 let readJsonFile = async filePath =>
   fileToJson(await readFileIfExists(filePath))
 
-let readLocalJsonFile = file => async dir =>
-  fileToJson(
-    await readFileIfExists(path.resolve(await getRunningDirectory(), dir, file))
+let readLocalJsonFile = file => async dir => {
+  let contents = await readFileIfExists(
+    path.resolve(await getRunningDirectory(), dir, file)
   )
+  try {
+    return fileToJson(contents)
+  } catch (e) {
+    console.info({ contents })
+    throw new Error(contents)
+  }
+}
 
 let getLintResults = _.flow(
   _.get('config.lintResultsPath'),

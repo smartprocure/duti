@@ -1,3 +1,7 @@
+## 0.9.1
+
+- If parsing JSON fails, throw with the correct stack instead of a generic syntax error
+
 ## 0.9.0
 
 - Removen node-git depdency
