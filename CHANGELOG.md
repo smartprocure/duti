@@ -1,3 +1,7 @@
+## 0.9.2
+
+- Updated [Danger.js](http://danger.systems/js/) version
+
 ## 0.9.1
 
 - If parsing JSON fails, throw with the correct stack instead of a generic syntax error
