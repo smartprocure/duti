@@ -11,9 +11,6 @@
     "url": "git+ssh://git@github.com/smartprocure/duti.git"
   },
   "license": "MIT",
-  "engines": {
-    "node": ">=8.0.0"
-  },
   "scripts": {
     "test": "jest",
     "test:watch": "npm t -- --watch",
