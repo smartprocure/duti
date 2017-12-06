@@ -3,8 +3,6 @@
   "recommendedPrReviewers": 1,
   "lintResultsPath": ".",
   "testResultsPath": ".",
-  "disallowedStrings": ["#ISSUEID"],
-  "autoFix": {
-    "extensions": [".js"]
-  }
+  "browserResultsPath": ".",
+  "disallowedStrings": ["#ISSUEID"]
 }

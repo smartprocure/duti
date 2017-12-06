@@ -4,12 +4,13 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.7.2",
+  "version": "0.9.5",
   "main": "src/index.js",
-  "license": "MIT",
-  "engines": {
-    "node": ">=8.0.0"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/smartprocure/duti.git"
   },
+  "license": "MIT",
   "scripts": {
     "test": "jest",
     "test:watch": "npm t -- --watch",
@@ -30,13 +31,17 @@
       "sourceType": "module"
     }
   },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "es5"
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "cosmiconfig": "^2.2.2",
-    "danger": "^1.1.0",
+    "danger": "^2.0.1",
     "futil-js": "^1.27.0",
     "lodash": "^4.17.4",
-    "nodegit": "^0.20.1",
     "pkg-up": "^2.0.0",
     "strip-ansi": "^4.0.0",
     "underscore.string": "^3.3.4"
