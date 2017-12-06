@@ -1,10 +1,15 @@
+let _ = require('lodash/fp')
 let { execSync } = require('child_process')
 
-let autoFix = async ({ message }) => {
+let autoFix = async ({ message, warn }) => {
   try {
     execSync('npm run duti:fix')
   } catch (e) {
-    message('No `duti:fix` npm script found. Not autofixing this PR.')
+    if (_.includes('missing script: duti:fix', e.message))
+      message('No `duti:fix` npm script found. Not autofixing this PR.')
+    else {
+      warn('Could not run `duti:fix` command successfully')
+    }
   }
   try {
     execSync(
