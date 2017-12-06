@@ -1,3 +1,7 @@
+## 0.9.4
+
+- Fix bug where adding a `CHANGELOG.md` file fails changelog checking
+
 ## 0.9.3
 
 * Remove Node 8 restriction
