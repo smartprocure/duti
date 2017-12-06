@@ -1,6 +1,7 @@
+let _ = require('lodash/fp')
 let { execSync } = require('child_process')
 
-let autoFix = async ({ message, config, warn }) => {
+let autoFix = async ({ message, warn }) => {
   try {
     execSync('npm run duti:fix')
   } catch (e) {
