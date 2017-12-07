@@ -4,7 +4,7 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.9.5",
+  "version": "0.10.0",
   "main": "src/index.js",
   "repository": {
     "type": "git",
@@ -19,7 +19,8 @@
     "lint:ci": "npm run lint -- -o lint-results.json -f json",
     "danger": "./bin/duti",
     "duti:fix": "npm run lint -- --fix && npm run fmt",
-    "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma es5"
+    "fmt":
+      "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma es5"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
