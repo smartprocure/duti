@@ -1,10 +1,14 @@
+## 0.10.0
+
+* Add some personality
+
 ## 0.9.5
 
-- Show proper error messages for failed autofix depending on reason
+* Show proper error messages for failed autofix depending on reason
 
 ## 0.9.4
 
-- Fix bug where adding a `CHANGELOG.md` file fails changelog checking
+* Fix bug where adding a `CHANGELOG.md` file fails changelog checking
 
 ## 0.9.3
 
