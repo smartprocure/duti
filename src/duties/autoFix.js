@@ -1,9 +1,30 @@
 let _ = require('lodash/fp')
-let { execSync } = require('child_process')
+let { execSync, exec } = require('child_process')
 
-let autoFix = async ({ message, warn }) => {
+let run = (command, cb) =>
+  exec(command, (err, output, input) => {
+    if (err) {
+      throw new Error(err)
+    }
+    cb(output, input)
+  })
+
+let autoFix = async ({ message, warn, markdown, config }) => {
   try {
     execSync('npm run duti:fix')
+    run('git diff --shortstat', out => {
+      let reg = /(\d+) insertions?[\D]*(\d+) deletions?/g
+      let vals = reg.exec(out)
+      if (vals && vals.length === 3) {
+        let additions = Number.parseInt(vals[1])
+        let deletions = Number.parseInt(vals[2])
+        if (additions + deletions > config.personalityNetChangeThreshold) {
+          markdown(
+            '![kill all humans](https://media.licdn.com/mpr/mpr/shrinknp_800_800/p/2/005/0b3/059/36a09a3.jpg)'
+          )
+        }
+      }
+    })
   } catch (e) {
     if (_.includes('missing script: duti:fix', e.message))
       message('No `duti:fix` npm script found. Not autofixing this PR.')

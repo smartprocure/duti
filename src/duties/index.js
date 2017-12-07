@@ -4,7 +4,6 @@ let testResults = require('./testResults')
 let library = require('./library')
 let autoFix = require('./autoFix')
 let browserResults = require('./browserResults')
-let personality = require('./personality')
 
 module.exports = Object.assign(
   {},
@@ -13,6 +12,5 @@ module.exports = Object.assign(
   testResults,
   browserResults,
   library,
-  autoFix,
-  personality
+  autoFix
 )
