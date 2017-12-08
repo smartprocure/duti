@@ -1,9 +1,9 @@
-let pr = require('./pr');
-let lint = require('./lint');
-let testResults = require('./testResults');
-let library = require('./library');
-let autoFix = require('./autoFix');
-let browserResults = require('./browserResults');
+let pr = require('./pr')
+let lint = require('./lint')
+let testResults = require('./testResults')
+let library = require('./library')
+let autoFix = require('./autoFix')
+let browserResults = require('./browserResults')
 
 module.exports = Object.assign(
   {},
@@ -13,4 +13,4 @@ module.exports = Object.assign(
   browserResults,
   library,
   autoFix
-);
+)
