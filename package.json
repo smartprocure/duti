@@ -21,16 +21,6 @@
     "duti:fix": "npm run lint -- --fix && npm run fmt",
     "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma es5"
   },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "env": {
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 8,
-      "sourceType": "module"
-    }
-  },
   "prettier": {
     "singleQuote": true,
     "semi": false,
