@@ -13,7 +13,7 @@ let autoFix = async ({ message, warn, markdown, config }) => {
     if (vals && vals.length === 3) {
       let additions = Number.parseInt(vals[1])
       let deletions = Number.parseInt(vals[2])
-      if (additions + deletions > config.personalityNetChangeThreshold) {
+      if (additions + deletions >= config.personalityNetChangeThreshold) {
         markdown(
           '![kill all humans](https://media.licdn.com/mpr/mpr/shrinknp_800_800/p/2/005/0b3/059/36a09a3.jpg)'
         )
