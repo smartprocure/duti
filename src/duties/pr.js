@@ -1,4 +1,5 @@
 let _ = require('lodash/fp')
+let F = require('futil-js')
 let { toSentence } = require('underscore.string')
 
 let prAssignee = ({ danger, fail }) => {
@@ -72,10 +73,7 @@ let gitFlow = ({ danger, warn }) => {
     'release/.*',
   ]
   let branchName = _.get('github.pr.head.ref', danger)
-  let branchUsesGitFlow = _.some(
-    scheme => new RegExp(scheme).test(branchName),
-    gitFlowSchemes
-  )
+  let branchUsesGitFlow = F.testRegex(_.join('|', gitFlowSchemes))(branchName)
 
   if (!branchUsesGitFlow)
     warn(
