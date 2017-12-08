@@ -84,7 +84,7 @@ let passing = {
     disconnected: false,
     exitCode: 0,
   },
-};
+}
 
 let failing = {
   browsers: {
@@ -407,9 +407,9 @@ let failing = {
     disconnected: false,
     exitCode: 1,
   },
-};
+}
 
 module.exports = {
   passing,
   failing,
-};
+}
