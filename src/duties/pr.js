@@ -72,10 +72,10 @@ let gitFlow = ({ danger, warn }) => {
     'release/.*',
   ]
   let branchName = _.get('github.pr.head.ref', danger)
-  let branchUsesGitFlow = _.some(scheme => {
-    let reg = new RegExp(scheme)
-    return reg.test(branchName)
-  }, gitFlowSchemes)
+  let branchUsesGitFlow = _.some(
+    scheme => new RegExp(scheme).test(branchName),
+    gitFlowSchemes
+  )
 
   if (!branchUsesGitFlow)
     warn(
