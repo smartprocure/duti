@@ -82,7 +82,7 @@ let passing = {
     },
   ],
   wasInterrupted: false,
-}
+};
 
 let failing = {
   numFailedTestSuites: 1,
@@ -171,9 +171,9 @@ let failing = {
     },
   ],
   wasInterrupted: false,
-}
+};
 
 module.exports = {
   passing,
   failing,
-}
+};
