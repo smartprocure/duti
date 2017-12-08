@@ -8,21 +8,11 @@ let autoFix = async ({ message, warn, markdown, config }) => {
   try {
     execSync('npm run duti:fix')
     let out = _.head(await execP('git diff --shortstat'))
-    // eslint-disable-next-line
-    console.info('git diff --shortstat: ', out)
     let reg = /(\d+) insertions?[\D]*(\d+) deletions?/g
     let vals = reg.exec(out)
     if (vals && vals.length === 3) {
       let additions = Number.parseInt(vals[1])
       let deletions = Number.parseInt(vals[2])
-      // eslint-disable-next-line
-      console.log({
-        out,
-        additions,
-        deletions,
-        threshold: config.personalityNetChangeThreshold,
-        markdown,
-      })
       if (additions + deletions >= config.personalityNetChangeThreshold) {
         markdown(
           '![kill all humans](https://media.licdn.com/mpr/mpr/shrinknp_800_800/p/2/005/0b3/059/36a09a3.jpg)'
