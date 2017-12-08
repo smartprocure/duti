@@ -1,28 +1,28 @@
 /* global danger fail warn schedule message */
-let _ = require('lodash/fp');
-let Promise = require('bluebird');
-let cosmiconfig = require('cosmiconfig');
-let defaultConfig = require('../.dutirc.json');
-let duties = require('./duties');
+let _ = require('lodash/fp')
+let Promise = require('bluebird')
+let cosmiconfig = require('cosmiconfig')
+let defaultConfig = require('../.dutirc.json')
+let duties = require('./duties')
 let {
   getLintResults,
   getTestResults,
   getBrowserResults,
   log,
-} = require('./utils');
+} = require('./utils')
 
-let explorer = cosmiconfig('duti', { rcExtensions: true });
+let explorer = cosmiconfig('duti', { rcExtensions: true })
 
 schedule(async () => {
-  let dutiConfig;
+  let dutiConfig
   try {
-    let { config } = await explorer.load(process.cwd());
-    dutiConfig = config;
+    let { config } = await explorer.load(process.cwd())
+    dutiConfig = config
   } catch (e) {
-    dutiConfig = defaultConfig;
+    dutiConfig = defaultConfig
   }
 
-  let config = dutiConfig;
+  let config = dutiConfig
 
   return Promise.all(
     _.over(_.values(duties))({
@@ -35,5 +35,5 @@ schedule(async () => {
       testResults: await getTestResults({ config }),
       browserResults: await getBrowserResults({ config }),
     })
-  );
-});
+  )
+})
