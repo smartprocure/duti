@@ -7,9 +7,9 @@ let execP = Promise.promisify(exec, { multiArgs: true })
 let autoFix = async ({ message, warn, markdown, config }) => {
   try {
     execSync('npm run duti:fix')
-    let [, stdout] = await execP('git diff --shortstat')
+    let out = await execP('git diff --shortstat')
     let reg = /(\d+) insertions?[\D]*(\d+) deletions?/g
-    let vals = reg.exec(stdout)
+    let vals = reg.exec(out)
     if (vals && vals.length === 3) {
       let additions = Number.parseInt(vals[1])
       let deletions = Number.parseInt(vals[2])
