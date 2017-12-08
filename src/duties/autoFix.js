@@ -8,6 +8,9 @@ let autoFix = async ({ message, warn, markdown, config }) => {
   try {
     execSync('npm run duti:fix')
     let out = await execP('git diff --shortstat')
+    console.log({
+      out,
+    })
     let reg = /(\d+) insertions?[\D]*(\d+) deletions?/g
     let vals = reg.exec(out)
     if (vals && vals.length === 3) {
