@@ -98,4 +98,18 @@ describe('Pull Request', () => {
     pr.disallowedDescription({ danger, fail, config })
     expect(fail).toHaveBeenCalled()
   })
+
+  it(`Warns if the PR's branch doesn't follow git-flow`, () => {
+    let danger = { github: { pr: { base: { ref: 'non-gitflow-branch' } } } }
+    let warn = jest.fn()
+    pr.gitFlow({ danger, warn })
+    expect(warn).toHaveBeenCalled()
+  })
+
+  it(`Doesn't warn if the PR's branch follows git-flow`, () => {
+    let danger = { github: { pr: { base: { ref: 'feature/GitFlowBranch' } } } }
+    let warn = jest.fn()
+    pr.gitFlow({ danger, warn })
+    expect(warn).not.toHaveBeenCalled()
+  })
 })

@@ -63,6 +63,26 @@ let disallowedDescription = ({ danger, fail, config }) => {
   }
 }
 
+let gitFlow = ({ danger, warn }) => {
+  let gitFlowSchemes = [
+    'master',
+    'develop',
+    'feature/.*',
+    'hotfix/.*',
+    'release/.*',
+  ]
+  let branchName = _.get('github.pr.base.ref', danger)
+  let branchUsesGitFlow = _.some(scheme => {
+    let reg = new RegExp(scheme)
+    return reg.test(branchName)
+  }, gitFlowSchemes)
+
+  if (!branchUsesGitFlow)
+    warn(
+      'Branch being merged does not follow [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/)'
+    )
+}
+
 module.exports = {
   prAssignee,
   bigPr,
@@ -70,4 +90,5 @@ module.exports = {
   requestedReviewers,
   netNegativePR,
   disallowedDescription,
+  gitFlow,
 }
