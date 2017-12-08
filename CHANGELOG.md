@@ -1,3 +1,7 @@
+## 0.10.1
+
+* Add ESLint to the project
+
 ## 0.10.0
 
 * Add some personality
