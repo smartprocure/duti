@@ -107,7 +107,7 @@ describe('Pull Request', () => {
   })
 
   it(`Doesn't warn if the PR's branch follows git-flow`, () => {
-    let danger = { github: { pr: { base: { ref: 'feature/GitFlowBranch' } } } }
+    let danger = { github: { pr: { head: { ref: 'feature/GitFlowBranch' } } } }
     let warn = jest.fn()
     pr.gitFlow({ danger, warn })
     expect(warn).not.toHaveBeenCalled()

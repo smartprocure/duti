@@ -71,11 +71,7 @@ let gitFlow = ({ danger, warn }) => {
     'hotfix/.*',
     'release/.*',
   ]
-  let branchName = _.get('github.pr.base.ref', danger)
-  console.log(
-    _.get('github.pr.head.ref', danger),
-    _.get('github.pr.base.ref', danger)
-  )
+  let branchName = _.get('github.pr.head.ref', danger)
   let branchUsesGitFlow = _.some(scheme => {
     let reg = new RegExp(scheme)
     return reg.test(branchName)
