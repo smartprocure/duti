@@ -1,3 +1,3 @@
-let duties = require('./duties');
+let duties = require('./duties')
 
-module.exports = Object.assign({}, duties);
+module.exports = Object.assign({}, duties)
