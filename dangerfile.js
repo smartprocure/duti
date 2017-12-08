@@ -1,1 +1,1 @@
-require('./src/dangerfile');
+require('./src/dangerfile')
