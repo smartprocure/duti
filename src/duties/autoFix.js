@@ -2,14 +2,15 @@ let _ = require('lodash/fp')
 let { execSync, exec } = require('child_process')
 let Promise = require('bluebird')
 
-let execP = Promise.promisify(exec)
+let execP = Promise.promisify(exec, { multiArgs: true })
 
 let autoFix = async ({ message, warn, markdown, config }) => {
   try {
     execSync('npm run duti:fix')
-    let { stdout } = await execP('git diff --shortstat')
+    let res = await execP('git diff --shortstat')
+    console.log(res)
     let reg = /(\d+) insertions?[\D]*(\d+) deletions?/g
-    let vals = reg.exec(stdout)
+    let vals = reg.exec('')
     if (vals && vals.length === 3) {
       let additions = Number.parseInt(vals[1])
       let deletions = Number.parseInt(vals[2])
