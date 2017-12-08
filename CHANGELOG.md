@@ -1,6 +1,10 @@
-## 0.10.1
+## 0.11.1
 
 * Add ESLint to the project
+
+## 0.11.0
+
+* Add Git Flow Warnings
 
 ## 0.10.0
 
