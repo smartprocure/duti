@@ -1,4 +1,5 @@
 let _ = require('lodash/fp')
+let F = require('futil-js')
 let { toSentence } = require('underscore.string')
 
 let prAssignee = ({ danger, fail }) => {
@@ -63,6 +64,23 @@ let disallowedDescription = ({ danger, fail, config }) => {
   }
 }
 
+let gitFlow = ({ danger, warn }) => {
+  let gitFlowSchemes = [
+    'master',
+    'develop',
+    'feature/.*',
+    'hotfix/.*',
+    'release/.*',
+  ]
+  let branchName = _.get('github.pr.head.ref', danger)
+  let branchUsesGitFlow = F.testRegex(_.join('|', gitFlowSchemes))(branchName)
+
+  if (!branchUsesGitFlow)
+    warn(
+      'Branch being merged does not follow [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/)'
+    )
+}
+
 module.exports = {
   prAssignee,
   bigPr,
@@ -70,4 +88,5 @@ module.exports = {
   requestedReviewers,
   netNegativePR,
   disallowedDescription,
+  gitFlow,
 }

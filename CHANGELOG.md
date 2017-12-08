@@ -1,3 +1,7 @@
+## 0.11.0
+
+* Add Git Flow Warnings
+
 ## 0.10.0
 
 * Add some personality
