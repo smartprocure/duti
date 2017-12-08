@@ -26,6 +26,16 @@
     "semi": false,
     "trailingComma": "es5"
   },
+  "eslintConfig": {
+    "extends": "smartprocure",
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true
+    }
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "cosmiconfig": "^2.2.2",
