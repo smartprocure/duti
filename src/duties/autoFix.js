@@ -7,7 +7,7 @@ let execP = Promise.promisify(exec, { multiArgs: true })
 let autoFix = async ({ message, warn, markdown, config }) => {
   try {
     execSync('npm run duti:fix')
-    let out = await execP('git diff --shortstat')
+    let out = _.head(await execP('git diff --shortstat'))
     // eslint-disable-next-line
     console.log({
       out,
