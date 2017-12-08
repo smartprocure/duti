@@ -1,6 +1,6 @@
 {
   "prNetChangeThreshold": 500,
-  "personalityNetChangeThreshold": 500,
+  "personalityNetChangeThreshold": 0,
   "recommendedPrReviewers": 1,
   "lintResultsPath": ".",
   "testResultsPath": ".",
