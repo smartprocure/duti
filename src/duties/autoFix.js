@@ -9,7 +9,7 @@ let autoFix = async ({ message, warn, markdown, config }) => {
     execSync('npm run duti:fix')
     let out = _.head(await execP('git diff --shortstat'))
     // eslint-disable-next-line
-    console.info(out)
+    console.info('git diff --shortstat: ', out)
     let reg = /(\d+) insertions?[\D]*(\d+) deletions?/g
     let vals = reg.exec(out)
     if (vals && vals.length === 3) {
