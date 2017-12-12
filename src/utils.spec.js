@@ -7,6 +7,7 @@ let {
   getTestResults,
   fileToJson,
   linkifyPath,
+  tailPath,
 } = require('./utils')
 
 describe('log', () => {
@@ -71,5 +72,12 @@ describe('linkifyPath', () => {
     expect(linkifyPath({ danger, path })).toBe(
       `<a href="https://test.example/blob/master/src/app.js">src/app.js</a>`
     )
+  })
+})
+
+describe('tailPath', () => {
+  it('removes the first dir in path', () => {
+    let path = '/no/yes/yes/file.ext'
+    expect(tailPath(path)).toBe('yes/yes/file.ext')
   })
 })

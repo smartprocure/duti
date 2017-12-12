@@ -1,6 +1,6 @@
 let _ = require('lodash/fp')
 let { basename } = require('path')
-let { linkifyPath } = require('../utils')
+let { linkifyPath, tailPath } = require('../utils')
 
 let messageTemplate = message => `
   <strong>${message.message}</strong>
@@ -13,7 +13,10 @@ let formatLintMessages = _.flow(_.map(messageTemplate), _.join('\n'))
 let lintTemplate = (severity, danger) => lint => `
 <details>
   <summary>${basename(lint.filePath)}</summary>
-  <p>${linkifyPath({ danger, path: lint.filePath })}</p>
+  <p>${linkifyPath({
+    danger,
+    path: tailPath(lint.filePath),
+  })}</p>
   ${formatLintMessages(
     severity ? _.filter({ severity }, lint.messages) : lint.messages
   )}
