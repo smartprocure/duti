@@ -56,7 +56,7 @@ let getBrowserResults = _.flow(
 let linkifyPath = ({ danger, path }) => {
   let repoUrl = danger.github.pr.head.repo.html_url
   let ref = danger.github.pr.head.ref
-  return `<a href="${repoUrl}/blob/${ref}/${path}">${path}</a>`
+  return `<a href="${repoUrl}/blob/${ref}/${path}" target="_blank">${path}</a>`
 }
 
 let pathTail = (path, config = {}) =>

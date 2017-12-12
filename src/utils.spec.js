@@ -70,7 +70,7 @@ describe('linkifyPath', () => {
     }
     let path = 'src/app.js'
     expect(linkifyPath({ danger, path })).toBe(
-      `<a href="https://test.example/blob/master/src/app.js">src/app.js</a>`
+      `<a href="https://test.example/blob/master/src/app.js" target="_blank">src/app.js</a>`
     )
   })
 })
