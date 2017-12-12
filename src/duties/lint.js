@@ -22,10 +22,10 @@ let lintTemplate = (severity, danger, config) => lint => `
   )}
 </details>`
 
-let formatLint = (severity, danger) =>
+let formatLint = (severity, danger, config) =>
   _.flow(
     _.filter(lint => _.some({ severity }, lint.messages)),
-    _.map(lintTemplate(severity, danger)),
+    _.map(lintTemplate(severity, danger, config)),
     _.join('')
   )
 
