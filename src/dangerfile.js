@@ -29,6 +29,7 @@ schedule(async () => {
       danger,
       fail: log(fail),
       warn: log(warn),
+      markdown: log(markdown),
       config,
       message: log(message),
       markdown: log(markdown),
