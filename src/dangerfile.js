@@ -32,7 +32,6 @@ schedule(async () => {
       markdown: log(markdown),
       config,
       message: log(message),
-      markdown: log(markdown),
       lintResults: await getLintResults({ config }),
       testResults: await getTestResults({ config }),
       browserResults: await getBrowserResults({ config }),
