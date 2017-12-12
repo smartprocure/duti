@@ -43,5 +43,5 @@ let hasBrowserErrors = ({ browserResults, fail, message }) => {
 }
 
 module.exports = {
-  hasBrowserErrors: hasBrowserErrors,
+  hasBrowserErrors,
 }
