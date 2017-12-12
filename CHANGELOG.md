@@ -1,3 +1,11 @@
+## 0.11.2
+
+* Add ESLint to the project
+
+## 0.11.1
+
+* Use real diffs for personality
+
 ## 0.11.0
 
 * Add Git Flow Warnings

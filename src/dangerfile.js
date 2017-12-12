@@ -1,4 +1,4 @@
-/* global danger fail warn schedule message */
+/* global danger fail warn schedule message markdown */
 let _ = require('lodash/fp')
 let Promise = require('bluebird')
 let cosmiconfig = require('cosmiconfig')
@@ -29,6 +29,7 @@ schedule(async () => {
       danger,
       fail: log(fail),
       warn: log(warn),
+      markdown: log(markdown),
       config,
       message: log(message),
       lintResults: await getLintResults({ config }),

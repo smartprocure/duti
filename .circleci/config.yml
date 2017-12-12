@@ -26,6 +26,7 @@ jobs:
       - run:
           name: pre-danger
           command: git config user.email "drodriguez@smartprocure.us" && git config user.name "Decrapifier" && git config push.default current
+          when: always
       - run:
           name: danger
           command: npm run danger
