@@ -12,6 +12,7 @@ let danger = {
 }
 
 describe('lint results', () => {
+  console.log('yo')
   it('allows lint results to be undefined', () => {
     let fail = jest.fn()
     let warn = jest.fn()
