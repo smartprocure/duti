@@ -7,7 +7,7 @@ let {
   getTestResults,
   fileToJson,
   linkifyPath,
-  tailPath,
+  pathTail,
 } = require('./utils')
 
 describe('log', () => {
@@ -75,9 +75,9 @@ describe('linkifyPath', () => {
   })
 })
 
-describe('tailPath', () => {
+describe('pathTail', () => {
   it('removes the first dir in path', () => {
     let path = '/no/yes/yes/file.ext'
-    expect(tailPath(path)).toBe('yes/yes/file.ext')
+    expect(pathTail(path)).toBe('yes/yes/file.ext')
   })
 })

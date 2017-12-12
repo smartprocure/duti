@@ -59,7 +59,7 @@ let linkifyPath = ({ danger, path }) => {
   return `<a href="${repoUrl}/blob/${ref}/${path}">${path}</a>`
 }
 
-let tailPath = _.flow(_.tail, _.join(''), _.split('/'), _.tail, _.join('/'))
+let pathTail = _.flow(_.tail, _.join(''), _.split('/'), _.tail, _.join('/'))
 
 module.exports = {
   log,
@@ -71,5 +71,5 @@ module.exports = {
   getRunningDirectory,
   readJsonFile,
   linkifyPath,
-  tailPath,
+  pathTail,
 }

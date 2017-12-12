@@ -1,6 +1,6 @@
 let _ = require('lodash/fp')
 let { basename } = require('path')
-let { linkifyPath, tailPath } = require('../utils')
+let { linkifyPath, pathTail } = require('../utils')
 
 let messageTemplate = message => `
   <strong>${message.message}</strong>
@@ -15,7 +15,7 @@ let lintTemplate = (severity, danger) => lint => `
   <summary>${basename(lint.filePath)}</summary>
   <p>${linkifyPath({
     danger,
-    path: tailPath(lint.filePath),
+    path: pathTail(lint.filePath),
   })}</p>
   ${formatLintMessages(
     severity ? _.filter({ severity }, lint.messages) : lint.messages
