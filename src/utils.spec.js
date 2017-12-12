@@ -6,6 +6,7 @@ let {
   readFileIfExists,
   getTestResults,
   fileToJson,
+  linkifyPath,
 } = require('./utils')
 
 describe('log', () => {
@@ -54,5 +55,21 @@ describe('fileToJson', () => {
 
   it('returns undefined if undefined', () => {
     expect(fileToJson(undefined)).toBe(undefined)
+  })
+})
+
+describe('linkifyPath', () => {
+  it('Creates an html link', () => {
+    let danger = {
+      github: {
+        pr: {
+          head: { ref: 'master', repo: { html_url: 'https://test.example' } },
+        },
+      },
+    }
+    let path = 'src/app.js'
+    expect(linkifyPath({ danger, path })).toBe(
+      `<a href="https://test.example/blob/master/src/app.js">src/app.js</a>`
+    )
   })
 })

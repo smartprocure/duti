@@ -53,6 +53,12 @@ let getBrowserResults = _.flow(
   readLocalJsonFile('browser-results.json')
 )
 
+let linkifyPath = ({ danger, path }) => {
+  let repoUrl = danger.github.pr.head.repo.html_url
+  let ref = danger.github.pr.head.ref
+  return `<a href="${repoUrl}/blob/${ref}/${path}">${path}</a>`
+}
+
 module.exports = {
   log,
   fileToJson,
@@ -62,4 +68,5 @@ module.exports = {
   getBrowserResults,
   getRunningDirectory,
   readJsonFile,
+  linkifyPath,
 }
