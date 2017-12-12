@@ -10,12 +10,12 @@ let messageTemplate = message => `
 
 let formatLintMessages = _.flow(_.map(messageTemplate), _.join('\n'))
 
-let lintTemplate = (severity, danger) => lint => `
+let lintTemplate = (severity, danger, config) => lint => `
 <details>
   <summary>${basename(lint.filePath)}</summary>
   <p>${linkifyPath({
     danger,
-    path: pathTail(lint.filePath),
+    path: pathTail(lint.filePath, config),
   })}</p>
   ${formatLintMessages(
     severity ? _.filter({ severity }, lint.messages) : lint.messages
@@ -29,10 +29,10 @@ let formatLint = (severity, danger) =>
     _.join('')
   )
 
-let formatStandardJSLint = danger =>
-  _.flow(_.map(lintTemplate(undefined, danger)), _.join(''))
+let formatStandardJSLint = (danger, config) =>
+  _.flow(_.map(lintTemplate(undefined, danger, config)), _.join(''))
 
-let hasLintErrors = ({ lintResults, fail, message, danger }) => {
+let hasLintErrors = ({ lintResults, fail, message, danger, config }) => {
   if (_.isNil(lintResults)) {
     message('Could not find any lint results')
     return
@@ -46,15 +46,15 @@ let hasLintErrors = ({ lintResults, fail, message, danger }) => {
   if (isStandardOutput) {
     if (lintResults && lintResults.length > 0) {
       fail(`Your PR has lint errors. Please fix these and commit them.
-        ${formatStandardJSLint(danger)(lintResults)}`)
+        ${formatStandardJSLint(danger, config)(lintResults)}`)
     }
   } else if (_.sumBy('errorCount', lintResults) > 0) {
     fail(`Your PR has lint errors. Please fix these and commit them.
-      ${formatLint(2, danger)(lintResults)}`)
+      ${formatLint(2, danger, config)(lintResults)}`)
   }
 }
 
-let hasLintWarnings = ({ lintResults, warn, message, danger }) => {
+let hasLintWarnings = ({ lintResults, warn, message, danger, config }) => {
   if (_.isNil(lintResults)) {
     message('Could not find any lint results')
     return
@@ -62,7 +62,7 @@ let hasLintWarnings = ({ lintResults, warn, message, danger }) => {
   if (_.sumBy('warningCount', lintResults) > 0) {
     warn(
       `Your PR has lint warnings. Please consider fixing these.
-      ${formatLint(1, danger)(lintResults)}`
+      ${formatLint(1, danger, config)(lintResults)}`
     )
   }
 }

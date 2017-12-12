@@ -76,8 +76,11 @@ describe('linkifyPath', () => {
 })
 
 describe('pathTail', () => {
-  it('removes the first dir in path', () => {
-    let path = '/no/yes/yes/file.ext'
-    expect(pathTail(path)).toBe('yes/yes/file.ext')
+  it('removes the all folders until defined folder is found', () => {
+    let path = '/no/bob/yes/yes/file.ext'
+    let config = {
+      rootFolder: 'yes',
+    }
+    expect(pathTail(path, config)).toBe('yes/yes/file.ext')
   })
 })
