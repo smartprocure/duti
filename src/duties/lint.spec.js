@@ -81,4 +81,16 @@ describe('lint results', () => {
 
     expect(expected).toBe(true)
   })
+
+  it('adds related links to lint results with errors', () => {
+    let fail = jest.fn()
+    let lintResults = lintHelpers.failing
+
+    lint.hasLintErrors({ lintResults, fail, danger })
+    let expected = /https:\/\/test.example\/blob\/master/.test(
+      fail.mock.calls[0][0]
+    )
+
+    expect(expected).toBe(true)
+  })
 })
