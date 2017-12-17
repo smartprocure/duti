@@ -1,5 +1,6 @@
 let _ = require('lodash/fp')
 let { basename } = require('path')
+let { linkifyPath, pathTail } = require('../utils')
 
 let messageTemplate = message => `
   <strong>${message.message}</strong>
@@ -9,25 +10,29 @@ let messageTemplate = message => `
 
 let formatLintMessages = _.flow(_.map(messageTemplate), _.join('\n'))
 
-let lintTemplate = severity => lint => `
+let lintTemplate = (severity, danger, config) => lint => `
 <details>
   <summary>${basename(lint.filePath)}</summary>
-  <p>Full Path: <code>${lint.filePath}</code></p>
+  <p>${linkifyPath({
+    danger,
+    path: pathTail(lint.filePath, config),
+  })}</p>
   ${formatLintMessages(
     severity ? _.filter({ severity }, lint.messages) : lint.messages
   )}
 </details>`
 
-let formatLint = severity =>
+let formatLint = (severity, danger, config) =>
   _.flow(
     _.filter(lint => _.some({ severity }, lint.messages)),
-    _.map(lintTemplate(severity)),
+    _.map(lintTemplate(severity, danger, config)),
     _.join('')
   )
 
-let formatStandardJSLint = _.flow(_.map(lintTemplate()), _.join(''))
+let formatStandardJSLint = (danger, config) =>
+  _.flow(_.map(lintTemplate(undefined, danger, config)), _.join(''))
 
-let hasLintErrors = ({ lintResults, fail, message }) => {
+let hasLintErrors = ({ lintResults, fail, message, danger, config }) => {
   if (_.isNil(lintResults)) {
     message('Could not find any lint results')
     return
@@ -41,15 +46,15 @@ let hasLintErrors = ({ lintResults, fail, message }) => {
   if (isStandardOutput) {
     if (lintResults && lintResults.length > 0) {
       fail(`Your PR has lint errors. Please fix these and commit them.
-        ${formatStandardJSLint(lintResults)}`)
+        ${formatStandardJSLint(danger, config)(lintResults)}`)
     }
   } else if (_.sumBy('errorCount', lintResults) > 0) {
     fail(`Your PR has lint errors. Please fix these and commit them.
-      ${formatLint(2)(lintResults)}`)
+      ${formatLint(2, danger, config)(lintResults)}`)
   }
 }
 
-let hasLintWarnings = ({ lintResults, warn, message }) => {
+let hasLintWarnings = ({ lintResults, warn, message, danger, config }) => {
   if (_.isNil(lintResults)) {
     message('Could not find any lint results')
     return
@@ -57,7 +62,7 @@ let hasLintWarnings = ({ lintResults, warn, message }) => {
   if (_.sumBy('warningCount', lintResults) > 0) {
     warn(
       `Your PR has lint warnings. Please consider fixing these.
-      ${formatLint(1)(lintResults)}`
+      ${formatLint(1, danger, config)(lintResults)}`
     )
   }
 }

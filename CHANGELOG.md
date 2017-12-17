@@ -1,3 +1,8 @@
+## 0.12.0
+
+* Add links to ESLint and Jest results
+* Add config for determining projectRoot
+
 ## 0.11.2
 
 * Add ESLint to the project
