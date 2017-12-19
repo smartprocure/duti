@@ -40,7 +40,9 @@ let autoFix = async ({ message, warn, markdown, config }) => {
 - Code that could be fixed via the --fix flag
 - Formatting that could be fixed by prettier
 
-Take a look at this commit to see what happened in detail: ${commitHash}`)
+Take a look at this commit to see what happened in detail: ${commitHash}
+
+And look at this wiki page to see the reasoning behind the ESLint rules: https://github.com/smartprocure/eslint-config-smartprocure/wiki/Rules-and-Why-We-Chose-Them`)
   } catch (err) {
     // eslint-disable-next-line
     console.log(
