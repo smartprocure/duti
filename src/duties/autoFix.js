@@ -33,6 +33,11 @@ let autoFix = async ({ message, warn, markdown, config }) => {
     message(
       'We were able to automatically fix some formatting issues in this PR for you!'
     )
+    markdown(`
+    ### Some things that were possibly fixed:
+
+    - Code that could be fixed via the --fix flag
+    - Formatting that could be fixed by prettier`)
   } catch (err) {
     // eslint-disable-next-line
     console.log(
