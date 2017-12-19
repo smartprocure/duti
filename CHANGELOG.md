@@ -1,3 +1,7 @@
+## 0.13.0
+
+* Add explanation to auto-fix
+
 ## 0.12.0
 
 * Add links to ESLint and Jest results
