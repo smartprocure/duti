@@ -30,9 +30,19 @@ let autoFix = async ({ message, warn, markdown, config }) => {
     execSync(
       'git commit -am "Automagically formatted by Duti!\n\nhttps://github.com/smartprocure/duti" && git push'
     )
+    let commitHash = _.head(await execP('git rev-parse HEAD'))
     message(
       'We were able to automatically fix some formatting issues in this PR for you!'
     )
+    markdown(`
+### Some things that were possibly fixed:
+
+- Code that could be fixed via the --fix flag
+- Formatting that could be fixed by prettier
+
+Take a look at this commit to see what happened in detail: ${commitHash}
+
+And look at this wiki page to see the reasoning behind the ESLint rules: https://github.com/smartprocure/eslint-config-smartprocure/wiki/Rules-and-Why-We-Chose-Them`)
   } catch (err) {
     // eslint-disable-next-line
     console.log(
