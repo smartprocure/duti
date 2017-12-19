@@ -30,6 +30,7 @@ let autoFix = async ({ message, warn, markdown, config }) => {
     execSync(
       'git commit -am "Automagically formatted by Duti!\n\nhttps://github.com/smartprocure/duti" && git push'
     )
+    let commitHash = _.head(await execP('git rev-parse HEAD'))
     message(
       'We were able to automatically fix some formatting issues in this PR for you!'
     )
@@ -37,7 +38,9 @@ let autoFix = async ({ message, warn, markdown, config }) => {
     ### Some things that were possibly fixed:
 
     - Code that could be fixed via the --fix flag
-    - Formatting that could be fixed by prettier`)
+    - Formatting that could be fixed by prettier
+    
+    Take a look at this commit to see what happened in detail: ${commitHash}`)
   } catch (err) {
     // eslint-disable-next-line
     console.log(
