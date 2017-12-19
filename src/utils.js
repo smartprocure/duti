@@ -1,66 +1,66 @@
 /* eslint-disable no-console */
 
-let fs = require('fs');
-let Promise = require('bluebird');
-let path = require('path');
-let pkgup = require('pkg-up');
-let _ = require('lodash/fp');
-let F = require('futil-js');
+let fs = require('fs')
+let Promise = require('bluebird')
+let path = require('path')
+let pkgup = require('pkg-up')
+let _ = require('lodash/fp')
+let F = require('futil-js')
 
-Promise.promisifyAll(fs);
+Promise.promisifyAll(fs)
 
 let log = _.curry(
   (fn, str) =>
     (process.env.NODE_ENV !== 'test' &&
       console.log(`[${`${fn.name}`.toUpperCase()}] ${str}`)) ||
     fn(str)
-);
+)
 
 let readFileIfExists = async path =>
-  fs.existsSync(path) ? fs.readFileAsync(path, 'utf8') : undefined;
+  fs.existsSync(path) ? fs.readFileAsync(path, 'utf8') : undefined
 
-let fileToJson = F.unless(_.isNil, JSON.parse);
+let fileToJson = F.unless(_.isNil, JSON.parse)
 
-let getRunningDirectory = async () => path.dirname(await pkgup());
+let getRunningDirectory = async () => path.dirname(await pkgup())
 
 let readJsonFile = async filePath =>
-  fileToJson(await readFileIfExists(filePath));
+  fileToJson(await readFileIfExists(filePath))
 
 let readLocalJsonFile = file => async dir => {
   let contents = await readFileIfExists(
     path.resolve(await getRunningDirectory(), dir, file)
-  );
+  )
   try {
-    return fileToJson(contents);
+    return fileToJson(contents)
   } catch (e) {
-    console.info({ contents });
-    throw new Error(contents);
+    console.info({ contents })
+    throw new Error(contents)
   }
-};
+}
 
 let getLintResults = _.flow(
   _.get('config.lintResultsPath'),
   readLocalJsonFile('lint-results.json')
-);
+)
 
 let getTestResults = _.flow(
   _.get('config.testResultsPath'),
   readLocalJsonFile('test-results.json')
-);
+)
 
 let getBrowserResults = _.flow(
   _.get('config.browserResultsPath'),
   readLocalJsonFile('browser-results.json')
-);
+)
 
 let linkifyPath = ({ danger, path }) => {
-  let repoUrl = danger.github.pr.head.repo.html_url;
-  let ref = danger.github.pr.head.ref;
-  return `<a href="${repoUrl}/blob/${ref}/${path}" target="_blank">${path}</a>`;
-};
+  let repoUrl = danger.github.pr.head.repo.html_url
+  let ref = danger.github.pr.head.ref
+  return `<a href="${repoUrl}/blob/${ref}/${path}" target="_blank">${path}</a>`
+}
 
 let pathTail = (path, config = {}) =>
-  path.substr(path.indexOf(config.rootFolder) || 0);
+  path.substr(path.indexOf(config.rootFolder) || 0)
 
 module.exports = {
   log,
@@ -73,4 +73,4 @@ module.exports = {
   readJsonFile,
   linkifyPath,
   pathTail,
-};
+}
