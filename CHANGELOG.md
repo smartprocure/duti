@@ -1,3 +1,7 @@
+## 0.14.0
+
+* Fixed DangerJS to v2.0.1
+
 ## 0.13.0
 
 * Add explanation to auto-fix
