@@ -4,7 +4,7 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.13.0",
+  "version": "0.14.0",
   "main": "src/index.js",
   "repository": {
     "type": "git",
