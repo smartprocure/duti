@@ -4,7 +4,7 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.13.0",
+  "version": "0.14.0",
   "main": "src/index.js",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "cosmiconfig": "^2.2.2",
-    "danger": "^2.0.1",
+    "danger": "2.0.1",
     "futil-js": "^1.27.0",
     "lodash": "^4.17.4",
     "pkg-up": "^2.0.0",
