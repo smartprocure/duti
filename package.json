@@ -39,9 +39,9 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "cosmiconfig": "^2.2.2",
-    "danger": "2.0.1",
-    "futil-js": "^1.27.0",
-    "lodash": "^4.17.4",
+    "danger": "^4.3.5",
+    "futil-js": "^1.54.0",
+    "lodash": "^4.17.11",
     "pkg-up": "^2.0.0",
     "strip-ansi": "^4.0.0",
     "underscore.string": "^3.3.4"
