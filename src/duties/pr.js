@@ -22,9 +22,9 @@ let bigPr = ({ danger, warn, config: { prNetChangeThreshold } }) => {
     prNetChangeThreshold
   ) {
     warn(
-      `:exclamation: This PR is BIG (+${danger.github.pr.additions} -${danger
-        .github.pr
-        .deletions})  \nPlease keep it below ${prNetChangeThreshold} net changes`
+      `:exclamation: This PR is BIG (+${danger.github.pr.additions} -${
+        danger.github.pr.deletions
+      })  \nPlease keep it below ${prNetChangeThreshold} net changes`
     )
   }
 }
@@ -49,17 +49,20 @@ let requestedReviewers = ({
 }
 
 let disallowedDescription = ({ danger, fail, config }) => {
-  let { github: { pr: { body } } } = danger
+  let {
+    github: {
+      pr: { body },
+    },
+  } = danger
   let failedChecks = _.filter(
     s => _.contains(s, body),
     config.disallowedStrings
   )
   if (failedChecks.length) {
     fail(
-      `The PR description contains the following disallowed ${failedChecks.length >
-      1
-        ? 'phrases'
-        : 'phrase'}: ${toSentence(failedChecks)}`
+      `The PR description contains the following disallowed ${
+        failedChecks.length > 1 ? 'phrases' : 'phrase'
+      }: ${toSentence(failedChecks)}`
     )
   }
 }

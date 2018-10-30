@@ -3,9 +3,9 @@ let stripAnsi = require('strip-ansi')
 let { pathTail, linkifyPath } = require('../utils')
 
 let resultTemplate = (isMocha, danger, config) => r => `<details>
-  <summary>${isMocha
-    ? r.title
-    : linkifyPath({ path: pathTail(r.name, config), danger })}</summary>
+  <summary>${
+    isMocha ? r.title : linkifyPath({ path: pathTail(r.name, config), danger })
+  }</summary>
   <code>${isMocha ? r.err.message : stripAnsi(r.message)}</code>
 </details>`
 

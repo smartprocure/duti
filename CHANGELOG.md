@@ -1,3 +1,6 @@
+## 0.14.1
+* Bump dependencies to stop security warnings
+
 ## 0.14.0
 
 * Fixed DangerJS to v2.0.1
