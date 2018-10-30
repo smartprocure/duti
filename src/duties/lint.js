@@ -4,11 +4,14 @@ let { linkifyPath, pathTail } = require('../utils')
 
 let messageTemplate = message => `
   <strong>${message.message}</strong>
-  <code>Line ${message.line}${message.source
-  ? `: ${message.source.trim()}`
-  : ''}</code>`
+  <code>Line ${message.line}${
+  message.source ? `: ${message.source.trim()}` : ''
+}</code>`
 
-let formatLintMessages = _.flow(_.map(messageTemplate), _.join('\n'))
+let formatLintMessages = _.flow(
+  _.map(messageTemplate),
+  _.join('\n')
+)
 
 let lintTemplate = (severity, danger, config) => lint => `
 <details>
@@ -30,7 +33,10 @@ let formatLint = (severity, danger, config) =>
   )
 
 let formatStandardJSLint = (danger, config) =>
-  _.flow(_.map(lintTemplate(undefined, danger, config)), _.join(''))
+  _.flow(
+    _.map(lintTemplate(undefined, danger, config)),
+    _.join('')
+  )
 
 let hasLintErrors = ({ lintResults, fail, message, danger, config }) => {
   if (_.isNil(lintResults)) {
