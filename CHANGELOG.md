@@ -1,3 +1,6 @@
+## 0.14.2
+* Bump dependencies to fix Circle issue
+
 ## 0.14.1
 * Bump dependencies to stop security warnings
 
