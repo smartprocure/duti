@@ -1,3 +1,6 @@
+## 0.15.0
+* Danger is now a peer dependency
+
 ## 0.14.2
 * Bump dependencies to fix Circle issue
 

@@ -11,6 +11,13 @@ describe('Pull Request', () => {
     expect(fail).toHaveBeenCalled()
   })
 
+  it('fails if the description is null', () => {
+    let danger = { github: { pr: { body: null } } }
+    let fail = jest.fn()
+    pr.noPrDescription({ danger, fail })
+    expect(fail).toHaveBeenCalled()
+  })
+
   it('passes if there is a description', () => {
     let danger = { github: { pr: { body: "I'm a description!" } } }
     let fail = jest.fn()

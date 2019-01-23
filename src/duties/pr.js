@@ -30,7 +30,7 @@ let bigPr = ({ danger, warn, config: { prNetChangeThreshold } }) => {
 }
 
 let noPrDescription = ({ danger, fail }) => {
-  if (danger.github.pr.body.length === 0) {
+  if (danger.github.pr.body === null || danger.github.pr.body.length === 0) {
     fail('Please add a description to your PR')
   }
 }
