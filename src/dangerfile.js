@@ -1,4 +1,4 @@
-let { message, danger, schedule, fail, warn, markdown } = require('danger')
+/* global message danger schedule fail warn markdown */
 let _ = require('lodash/fp')
 let Promise = require('bluebird')
 let cosmiconfig = require('cosmiconfig')

@@ -1,3 +1,6 @@
+## 0.14.3
+* Do not import Danger globals in the dangerfile
+
 ## 0.14.2
 * Bump dependencies to fix Circle issue
 
