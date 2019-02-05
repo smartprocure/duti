@@ -32,7 +32,10 @@ schedule(async () => {
   duties.readmeUpdate()
 
   // Browser, linter, and test results
-  duties.hasBrowserErrors(await getBrowserResults(browserResultsPath), rootFolder)
+  duties.hasBrowserErrors(
+    await getBrowserResults(browserResultsPath),
+    rootFolder
+  )
   duties.hasLintErrors(await getLintResults(lintResultsPath), rootFolder)
   duties.hasLintWarnings(await getLintResults(lintResultsPath), rootFolder)
   duties.hasTestErrors(await getTestResults(testResultsPath), rootFolder)

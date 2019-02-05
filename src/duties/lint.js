@@ -38,7 +38,10 @@ let formatStandardJSLint = danger => (lintResults, rootFolder) =>
     _.join('')
   )(lintResults)
 
-let hasLintErrors = ({ fail, message, danger }) => (lintResults, rootFolder = '.') => {
+let hasLintErrors = ({ fail, message, danger }) => (
+  lintResults,
+  rootFolder = '.'
+) => {
   if (_.isNil(lintResults)) {
     message('Could not find any lint results')
     return
@@ -60,7 +63,10 @@ let hasLintErrors = ({ fail, message, danger }) => (lintResults, rootFolder = '.
   }
 }
 
-let hasLintWarnings = ({ warn, message, danger }) => (lintResults, rootFolder = '.') => {
+let hasLintWarnings = ({ warn, message, danger }) => (
+  lintResults,
+  rootFolder = '.'
+) => {
   if (_.isNil(lintResults)) {
     message('Could not find any lint results')
     return

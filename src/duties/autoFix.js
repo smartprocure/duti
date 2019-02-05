@@ -4,7 +4,11 @@ let Promise = require('bluebird')
 
 let execP = Promise.promisify(exec, { multiArgs: true })
 
-let autoFix = ({ message, warn, markdown }) => async personalityNetChangeThreshold => {
+let autoFix = ({
+  message,
+  warn,
+  markdown,
+}) => async personalityNetChangeThreshold => {
   try {
     execSync('npm run duti:fix')
     let out = _.head(await execP('git diff --shortstat'))

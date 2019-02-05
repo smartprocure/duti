@@ -4,7 +4,9 @@ let { pathTail, linkifyPath } = require('../utils')
 
 let resultTemplate = (isMocha, danger) => (r, rootFolder) => `<details>
   <summary>${
-    isMocha ? r.title : linkifyPath({ path: pathTail(r.name, rootFolder), danger })
+    isMocha
+      ? r.title
+      : linkifyPath({ path: pathTail(r.name, rootFolder), danger })
   }</summary>
   <code>${isMocha ? r.err.message : stripAnsi(r.message)}</code>
 </details>`
