@@ -17,8 +17,8 @@ describe('lint results', () => {
     let warn = jest.fn()
     let message = jest.fn()
     let lintResults = undefined
-    lint.hasLintErrors({ lintResults, fail, message, danger })
-    lint.hasLintWarnings({ lintResults, warn, message, danger })
+    lint.hasLintErrors({ fail, message, danger })(lintResults)
+    lint.hasLintWarnings({ warn, message, danger })(lintResults)
 
     expect(fail).not.toHaveBeenCalled()
     expect(warn).not.toHaveBeenCalled()
@@ -28,7 +28,7 @@ describe('lint results', () => {
   it('fails if they have errors', () => {
     let fail = jest.fn()
     let lintResults = lintHelpers.failing
-    lint.hasLintErrors({ lintResults, fail, danger })
+    lint.hasLintErrors({ fail, danger })(lintResults)
 
     expect(fail).toHaveBeenCalled()
   })
@@ -36,7 +36,7 @@ describe('lint results', () => {
   it('warns if they have warnings', () => {
     let warn = jest.fn()
     let lintResults = lintHelpers.warning
-    lint.hasLintWarnings({ lintResults, warn, danger })
+    lint.hasLintWarnings({ warn, danger })(lintResults)
 
     expect(warn).toHaveBeenCalled()
   })
@@ -45,8 +45,8 @@ describe('lint results', () => {
     let warn = jest.fn()
     let fail = jest.fn()
     let lintResults = lintHelpers.passing
-    lint.hasLintWarnings({ lintResults, warn, danger })
-    lint.hasLintErrors({ lintResults, fail, danger })
+    lint.hasLintWarnings({ warn, danger })(lintResults)
+    lint.hasLintErrors({ fail, danger })(lintResults)
 
     expect(warn).not.toHaveBeenCalled()
     expect(fail).not.toHaveBeenCalled()
@@ -64,7 +64,7 @@ describe('lint results', () => {
     it('fails if there are any messages', () => {
       let fail = jest.fn()
       let lintResults = lintHelpers.standardJsonFailing
-      lint.hasLintErrors({ lintResults, fail, danger })
+      lint.hasLintErrors({ fail, danger })(lintResults)
 
       expect(fail).toHaveBeenCalled()
     })
@@ -74,7 +74,7 @@ describe('lint results', () => {
     let warn = jest.fn()
     let lintResults = lintHelpers.warning
 
-    lint.hasLintWarnings({ lintResults, warn, danger })
+    lint.hasLintWarnings({ warn, danger })(lintResults)
     let expected = /https:\/\/test.example\/blob\/master/.test(
       warn.mock.calls[0][0]
     )
@@ -86,7 +86,7 @@ describe('lint results', () => {
     let fail = jest.fn()
     let lintResults = lintHelpers.failing
 
-    lint.hasLintErrors({ lintResults, fail, danger })
+    lint.hasLintErrors({ fail, danger })(lintResults)
     let expected = /https:\/\/test.example\/blob\/master/.test(
       fail.mock.calls[0][0]
     )

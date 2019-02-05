@@ -8,7 +8,7 @@ describe('browser results', () => {
     let fail = jest.fn()
     let message = jest.fn()
     let browserResults = browserHelpers.failing
-    browser.hasBrowserErrors({ browserResults, fail, message })
+    browser.hasBrowserErrors({ fail, message })(browserResults)
 
     expect(fail).toHaveBeenCalled()
     expect(message).not.toHaveBeenCalled()
@@ -18,7 +18,7 @@ describe('browser results', () => {
     let fail = jest.fn()
     let message = jest.fn()
     let browserResults = browserHelpers.passing
-    browser.hasBrowserErrors({ browserResults, fail, message })
+    browser.hasBrowserErrors({ fail, message })(browserResults)
 
     expect(message).toHaveBeenCalled()
     expect(fail).not.toHaveBeenCalled()
@@ -28,7 +28,7 @@ describe('browser results', () => {
     let fail = jest.fn()
     let message = jest.fn()
     let browserResults = {}
-    browser.hasBrowserErrors({ browserResults, fail, message })
+    browser.hasBrowserErrors({ fail, message })(browserResults)
 
     expect(message).toHaveBeenCalled()
     expect(fail).not.toHaveBeenCalled()

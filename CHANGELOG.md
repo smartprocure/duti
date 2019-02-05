@@ -1,3 +1,9 @@
+## 1.0.0
+* Drop support for JSON config files. Instead use a dangerfile.js as recommended 
+  by danger
+* Breaking API changes: duties do not take a config object anymore. Instead pass 
+  arguments as needed
+
 ## 0.15.0
 * Danger is now a peer dependency
 

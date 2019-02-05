@@ -15,7 +15,7 @@ describe('test results', () => {
   it('fails if they have errors', () => {
     let fail = jest.fn()
     let testResults = testHelpers.failing
-    test.hasTestErrors({ testResults, fail, danger })
+    test.hasTestErrors({ fail, danger })(testResults)
 
     expect(fail).toHaveBeenCalled()
   })
@@ -23,7 +23,7 @@ describe('test results', () => {
   it('doesnt fail if it is passing', () => {
     let fail = jest.fn()
     let testResults = testHelpers.passing
-    test.hasTestErrors({ testResults, fail })
+    test.hasTestErrors({ fail })(testResults)
 
     expect(fail).not.toHaveBeenCalled()
   })
@@ -31,7 +31,7 @@ describe('test results', () => {
   it('has a link', () => {
     let fail = jest.fn()
     let testResults = testHelpers.failing
-    test.hasTestErrors({ testResults, fail, danger })
+    test.hasTestErrors({ fail, danger })(testResults)
     let expected = /https:\/\/test.example/.test(fail.mock.calls[0][0])
     expect(expected).toBe(true)
   })

@@ -33,18 +33,14 @@ describe('checkFileExists', () => {
 
 describe('getLintResults', () => {
   it('parses results', async () => {
-    let result = await getLintResults({
-      config: { lintResultsPath: './src/test-data' },
-    })
+    let result = await getLintResults('./src/test-data')
     expect(result).toBeDefined()
   })
 })
 
 describe('getTestResults', () => {
   it('parses results', async () => {
-    let result = await getTestResults({
-      config: { testResultsPath: './src/test-data' },
-    })
+    let result = await getTestResults('./src/test-data')
     expect(result).toBeDefined()
   })
 })
@@ -78,9 +74,7 @@ describe('linkifyPath', () => {
 describe('pathTail', () => {
   it('removes the all folders until defined folder is found', () => {
     let path = '/no/bob/yes/yes/file.ext'
-    let config = {
-      rootFolder: 'yes',
-    }
-    expect(pathTail(path, config)).toBe('yes/yes/file.ext')
+    let rootFolder = 'yes'
+    expect(pathTail(path, rootFolder)).toBe('yes/yes/file.ext')
   })
 })

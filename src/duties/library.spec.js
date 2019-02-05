@@ -5,7 +5,7 @@ describe('emptyChangelog', () => {
   it('fails if the changelog has not been updated', () => {
     let fail = jest.fn()
     let danger = { git: { modified_files: [] } }
-    emptyChangelog({ danger, fail })
+    emptyChangelog({ danger, fail })()
     expect(fail).toHaveBeenCalled()
   })
 
@@ -19,7 +19,7 @@ describe('emptyChangelog', () => {
   it('doesnt fail if there was an added changelog file', () => {
     let fail = jest.fn()
     let danger = { git: { added_files: ['CHANGELOG.md'] } }
-    emptyChangelog({ danger, fail })
+    emptyChangelog({ danger, fail })()
     expect(fail).not.toHaveBeenCalled()
   })
 })
@@ -31,7 +31,7 @@ describe('versionBump', () => {
       diff: '',
     }))
     let danger = { git: { diffForFile } }
-    await versionBump({ danger, fail })
+    await versionBump({ danger, fail })()
     expect(fail).toHaveBeenCalled()
   })
 
@@ -41,7 +41,7 @@ describe('versionBump', () => {
       diff: '{"version": "1.0.0"}',
     }))
     let danger = { git: { diffForFile } }
-    await versionBump({ danger, fail })
+    await versionBump({ danger, fail })()
     expect(fail).not.toHaveBeenCalled()
   })
 })
@@ -50,7 +50,7 @@ describe('readmeUpdate', () => {
   it('fails if the readme has not been updated', () => {
     let warn = jest.fn()
     let danger = { git: { modified_files: [] } }
-    readmeUpdate({ danger, warn })
+    readmeUpdate({ danger, warn })()
     expect(warn).toHaveBeenCalled()
   })
 

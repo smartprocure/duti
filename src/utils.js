@@ -38,20 +38,9 @@ let readLocalJsonFile = file => async dir => {
   }
 }
 
-let getLintResults = _.flow(
-  _.get('config.lintResultsPath'),
-  readLocalJsonFile('lint-results.json')
-)
-
-let getTestResults = _.flow(
-  _.get('config.testResultsPath'),
-  readLocalJsonFile('test-results.json')
-)
-
-let getBrowserResults = _.flow(
-  _.get('config.browserResultsPath'),
-  readLocalJsonFile('browser-results.json')
-)
+let getLintResults = readLocalJsonFile('lint-results.json')
+let getTestResults = readLocalJsonFile('test-results.json')
+let getBrowserResults = readLocalJsonFile('browser-results.json')
 
 let linkifyPath = ({ danger, path }) => {
   let repoUrl = danger.github.pr.head.repo.html_url
@@ -59,8 +48,8 @@ let linkifyPath = ({ danger, path }) => {
   return `<a href="${repoUrl}/blob/${ref}/${path}" target="_blank">${path}</a>`
 }
 
-let pathTail = (path, config = {}) =>
-  path.substr(path.indexOf(config.rootFolder) || 0)
+let pathTail = (path, rootFolder) =>
+  path.substr(path.indexOf(rootFolder) || 0)
 
 module.exports = {
   log,

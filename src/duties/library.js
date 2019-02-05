@@ -1,6 +1,6 @@
 let _ = require('lodash/fp')
 
-let emptyChangelog = ({ danger, fail }) => {
+let emptyChangelog = ({ danger, fail }) => () => {
   if (
     !_.includes('CHANGELOG.md', danger.git.modified_files) &&
     !_.includes('CHANGELOG.md', danger.git.added_files)
@@ -9,7 +9,7 @@ let emptyChangelog = ({ danger, fail }) => {
   }
 }
 
-let versionBump = async ({ danger, fail }) => {
+let versionBump = ({ danger, fail }) => async () => {
   let versionChanged = _.includes(
     'version',
     _.get('diff', await danger.git.diffForFile('package.json'))
@@ -19,7 +19,7 @@ let versionBump = async ({ danger, fail }) => {
   }
 }
 
-let readmeUpdate = ({ danger, warn }) => {
+let readmeUpdate = ({ danger, warn }) => () => {
   if (!_.includes('README.md', danger.git.modified_files)) {
     warn('The README has not been updated. Please update the README.')
   }

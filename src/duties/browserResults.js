@@ -1,6 +1,6 @@
 let _ = require('lodash/fp')
 
-let hasBrowserErrors = ({ browserResults, fail, message }) => {
+let hasBrowserErrors = ({ fail, message }) => browserResults => {
   if (_.isNil(browserResults)) {
     message('Could not find any browser results.')
     return

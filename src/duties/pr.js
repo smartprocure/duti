@@ -2,7 +2,7 @@ let _ = require('lodash/fp')
 let F = require('futil-js')
 let { toSentence } = require('underscore.string')
 
-let prAssignee = ({ danger, fail }) => {
+let prAssignee = ({ danger, fail }) => () => {
   if (!danger.github.pr.assignee) {
     fail(
       'Please assign someone to merge this PR, and optionally include people who should review.'
@@ -10,13 +10,13 @@ let prAssignee = ({ danger, fail }) => {
   }
 }
 
-let netNegativePR = ({ danger, message }) => {
+let netNegativePR = ({ danger, message }) => () => {
   if (danger.github.pr.additions < danger.github.pr.deletions) {
     message('You reduced the total lines of code! Awesome! :+1:')
   }
 }
 
-let bigPr = ({ danger, warn, config: { prNetChangeThreshold } }) => {
+let bigPr = ({ danger, warn }) => prNetChangeThreshold => {
   if (
     danger.github.pr.additions + danger.github.pr.deletions >=
     prNetChangeThreshold
@@ -29,17 +29,13 @@ let bigPr = ({ danger, warn, config: { prNetChangeThreshold } }) => {
   }
 }
 
-let noPrDescription = ({ danger, fail }) => {
+let noPrDescription = ({ danger, fail }) => () => {
   if (danger.github.pr.body === null || danger.github.pr.body.length === 0) {
     fail('Please add a description to your PR')
   }
 }
 
-let requestedReviewers = ({
-  danger,
-  warn,
-  config: { recommendedPrReviewers },
-}) => {
+let requestedReviewers = ({ danger, warn }) => recommendedPrReviewers => {
   let reviewerAmt = danger.github.pr.requested_reviewers.length
   if (reviewerAmt < recommendedPrReviewers) {
     let netReviewers = recommendedPrReviewers - reviewerAmt
@@ -48,16 +44,13 @@ let requestedReviewers = ({
   }
 }
 
-let disallowedDescription = ({ danger, fail, config }) => {
+let disallowedDescription = ({ danger, fail }) => disallowedStrings => {
   let {
     github: {
       pr: { body },
     },
   } = danger
-  let failedChecks = _.filter(
-    s => _.contains(s, body),
-    config.disallowedStrings
-  )
+  let failedChecks = _.filter(s => _.contains(s, body), disallowedStrings)
   if (failedChecks.length) {
     fail(
       `The PR description contains the following disallowed ${
@@ -67,7 +60,7 @@ let disallowedDescription = ({ danger, fail, config }) => {
   }
 }
 
-let gitFlow = ({ danger, warn }) => {
+let gitFlow = ({ danger, warn }) => () => {
   let gitFlowSchemes = [
     'master',
     'develop',

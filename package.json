@@ -4,7 +4,7 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.15.0",
+  "version": "1.0.0",
   "main": "src/index.js",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "test:ci": "npm t -- --coverage --json --outputFile=test-results.json",
     "lint": "eslint . --ignore-path .gitignore",
     "lint:ci": "npm run lint -- -o lint-results.json -f json",
-    "danger": "./bin/duti",
+    "danger": "danger ci",
     "duti:fix": "npm run lint -- --fix && npm run fmt",
     "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma es5"
   },
@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "bluebird": "^3.5.0",
-    "cosmiconfig": "^2.2.2",
     "futil-js": "^1.54.0",
     "lodash": "^4.17.11",
     "pkg-up": "^2.0.0",
