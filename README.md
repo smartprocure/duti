@@ -9,11 +9,13 @@ D(anger) (Uti)lities
 
 ```javascript
 // danger, schedule, etc... are provided as globals by danger
-let duties = require('duti')({ danger, schedule, fail, warn, markdown, message })
+let {
+    readmeUpdate,
+    versionBump
+} = require('duti')({ danger, schedule, fail, warn, markdown, message })
 
-// Then use the duties. They will call the appropriate danger fail, warn, and message functions
-duties.readmeUpdate()
+readmeUpdate()
 schedule(async () => {
-    await duties.versionBump()
+    await versionBump()
 })
 ```

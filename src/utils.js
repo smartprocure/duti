@@ -48,8 +48,7 @@ let linkifyPath = ({ danger, path }) => {
   return `<a href="${repoUrl}/blob/${ref}/${path}" target="_blank">${path}</a>`
 }
 
-let pathTail = (path, rootFolder) =>
-  path.substr(path.indexOf(rootFolder) || 0)
+let pathTail = (path, rootFolder) => path.substr(path.indexOf(rootFolder) || 0)
 
 module.exports = {
   log,
