@@ -1,5 +1,8 @@
-## 0.14.3
+## 0.15.1
 * Do not import Danger globals in the dangerfile
+
+## 0.15.0
+* Danger is now a peer dependency
 
 ## 0.14.2
 * Bump dependencies to fix Circle issue
