@@ -1,3 +1,6 @@
+## 0.15.1
+* Do not import Danger globals in the dangerfile
+
 ## 0.15.0
 * Danger is now a peer dependency
 
