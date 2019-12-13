@@ -1,9 +1,7 @@
 let _ = require('lodash/fp')
 
 let emptyChangelog = ({ danger, fail }) => {
-  if (
-    !/changelog/i.test([danger.git.modified_files, danger.git.added_files])
-  ) {
+  if (!/changelog/i.test([danger.git.modified_files, danger.git.added_files])) {
     fail('The changelog has not been updated. Please update the changelog.')
   }
 }
