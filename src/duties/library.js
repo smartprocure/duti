@@ -2,8 +2,7 @@ let _ = require('lodash/fp')
 
 let emptyChangelog = ({ danger, fail }) => {
   if (
-    !_.includes('CHANGELOG.md', danger.git.modified_files) &&
-    !_.includes('CHANGELOG.md', danger.git.added_files)
+    !/changelog/i.test([danger.git.modified_files, danger.git.added_files])
   ) {
     fail('The changelog has not been updated. Please update the changelog.')
   }
@@ -20,7 +19,7 @@ let versionBump = async ({ danger, fail }) => {
 }
 
 let readmeUpdate = ({ danger, warn }) => {
-  if (!_.includes('README.md', danger.git.modified_files)) {
+  if (!/readme/i.test(danger.git.modified_files)) {
     warn('The README has not been updated. Please update the README.')
   }
 }

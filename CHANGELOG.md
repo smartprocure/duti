@@ -1,3 +1,6 @@
+## 0.15.2
+* Support arbitrary file extensions for changelog & readme
+
 ## 0.15.1
 * Do not import Danger globals in the dangerfile
 
