@@ -22,6 +22,16 @@ describe('emptyChangelog', () => {
     emptyChangelog({ danger, fail })
     expect(fail).not.toHaveBeenCalled()
   })
+
+  it('works with arbitrary file extensions and alternate casing', () => {
+    let fail = jest.fn()
+    emptyChangelog({ danger: { git: { added_files: ['changelog'] } }, fail })
+    emptyChangelog({
+      danger: { git: { added_files: ['cHaNgElOg.creole'] } },
+      fail,
+    })
+    expect(fail).not.toHaveBeenCalled()
+  })
 })
 
 describe('versionBump', () => {
@@ -58,6 +68,16 @@ describe('readmeUpdate', () => {
     let warn = jest.fn()
     let danger = { git: { modified_files: ['README.md'] } }
     readmeUpdate({ danger, warn })
+    expect(warn).not.toHaveBeenCalled()
+  })
+
+  it('works with arbitrary file extensions and casing', () => {
+    let warn = jest.fn()
+    readmeUpdate({ danger: { git: { modified_files: ['README'] } }, warn })
+    readmeUpdate({
+      danger: { git: { modified_files: ['readme.asciidoc'] } },
+      warn,
+    })
     expect(warn).not.toHaveBeenCalled()
   })
 })
