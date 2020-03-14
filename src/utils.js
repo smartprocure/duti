@@ -5,7 +5,7 @@ let Promise = require('bluebird')
 let path = require('path')
 let pkgup = require('pkg-up')
 let _ = require('lodash/fp')
-let F = require('futil-js')
+let F = require('futil')
 
 Promise.promisifyAll(fs)
 
