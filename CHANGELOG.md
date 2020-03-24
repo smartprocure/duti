@@ -1,3 +1,6 @@
+## 0.15.3
+* Update all mentions of `futil-js` to `futil`
+
 ## 0.15.2
 * Support arbitrary file extensions for changelog & readme
 
