@@ -4,7 +4,7 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.15.3",
+  "version": "0.15.4",
   "main": "src/index.js",
   "repository": {
     "type": "git",
@@ -53,6 +53,6 @@
     "prettier": "^1.5.3"
   },
   "peerDependencies": {
-    "danger": "^6.0.0"
+    "danger": ">=6.0.0"
   }
 }
