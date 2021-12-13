@@ -12,7 +12,8 @@ Promise.promisifyAll(fs)
 let log = _.curry(
   (fn, str) =>
     (process.env.NODE_ENV !== 'test' &&
-      console.log(`[${`${fn.name}`.toUpperCase()}] ${str}`)) ||
+      //console.log(`[${`${fn.name}`.toUpperCase()}] ${str}`)) ||
+      console.log(`[${_.toUpperCase(fn.name)}] ${str}`)) ||
     fn(str)
 )
 

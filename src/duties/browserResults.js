@@ -16,6 +16,7 @@ let hasBrowserErrors = ({ browserResults, fail, message }) => {
     }
 
     if (failed > 0) {
+      // eslint-disable-next-line
       _.flow(
         // Flatten test results into one array.
         _.values,

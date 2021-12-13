@@ -4,7 +4,7 @@
   "bin": {
     "duti": "bin/duti"
   },
-  "version": "0.15.3",
+  "version": "1.0.0",
   "main": "src/index.js",
   "repository": {
     "type": "git",
@@ -18,39 +18,21 @@
     "lint": "eslint . --ignore-path .gitignore",
     "lint:ci": "npm run lint -- -o lint-results.json -f json",
     "danger": "./bin/duti",
-    "duti:fix": "npm run lint -- --fix && npm run fmt",
-    "fmt": "prettier --write {*.js,{src,bin}/**/*.js} --no-semi --single-quote --trailing-comma es5"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "semi": false,
-    "trailingComma": "es5"
-  },
-  "eslintConfig": {
-    "extends": "smartprocure",
-    "parserOptions": {
-      "ecmaVersion": 8,
-      "sourceType": "module"
-    },
-    "env": {
-      "node": true
-    }
+    "duti:fix": "npm run lint -- --fix"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
     "cosmiconfig": "^2.2.2",
-    "futil": "^1.54.0",
-    "lodash": "^4.17.11",
+    "futil": "1.69.0",
+    "lodash": "4.17.21",
     "pkg-up": "^2.0.0",
     "strip-ansi": "^4.0.0",
     "underscore.string": "^3.3.4"
   },
   "devDependencies": {
-    "danger": "^6.1.13",
-    "eslint": "^4.12.1",
-    "eslint-config-smartprocure": "^1.2.0",
-    "jest": "^20.0.4",
-    "prettier": "^1.5.3"
+    "danger": "10.7.1",
+    "eslint-config-smartprocure": "3.0.2",
+    "jest": "27.4.4"
   },
   "peerDependencies": {
     "danger": "^6.0.0"

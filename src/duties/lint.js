@@ -5,7 +5,7 @@ let { linkifyPath, pathTail } = require('../utils')
 let messageTemplate = message => `
   <strong>${message.message}</strong>
   <code>Line ${message.line}${
-  message.source ? `: ${message.source.trim()}` : ''
+  message.source ? `: ${_.trim(message.source)}` : ''
 }</code>`
 
 let formatLintMessages = _.flow(
@@ -43,6 +43,7 @@ let hasLintErrors = ({ lintResults, fail, message, danger, config }) => {
     message('Could not find any lint results')
     return
   }
+  /* eslint-disable-next-line lodash-fp/prefer-composition-grouping */
   let isStandardOutput = _.flow(
     _.filter('messages'),
     _.filter(['errorCount', 0]),

@@ -15,6 +15,7 @@ let hasTestErrors = ({ testResults, fail, danger, config }) => {
     testResults &&
     (isMocha ? testResults.stats.failures : testResults.numFailedTests) > 0
   ) {
+    // eslint-disable-next-line
     _.flow(
       _.reject(result => _.isEmpty(isMocha ? result.err : result.message)),
       _.map(resultTemplate(isMocha, danger, config)),

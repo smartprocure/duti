@@ -19,7 +19,7 @@ describe('Pull Request', () => {
   })
 
   it('passes if there is a description', () => {
-    let danger = { github: { pr: { body: "I'm a description!" } } }
+    let danger = { github: { pr: { body: 'I\'m a description!' } } }
     let fail = jest.fn()
     pr.noPrDescription({ danger, fail })
     expect(fail).not.toHaveBeenCalled()
@@ -106,14 +106,14 @@ describe('Pull Request', () => {
     expect(fail).toHaveBeenCalled()
   })
 
-  it(`Warns if the PR's branch doesn't follow git-flow`, () => {
+  it('Warns if the PR\'s branch doesn\'t follow git-flow', () => {
     let danger = { github: { pr: { base: { ref: 'non-gitflow-branch' } } } }
     let warn = jest.fn()
     pr.gitFlow({ danger, warn })
     expect(warn).toHaveBeenCalled()
   })
 
-  it(`Doesn't warn if the PR's branch follows git-flow`, () => {
+  it('Doesn\'t warn if the PR\'s branch follows git-flow', () => {
     let danger = { github: { pr: { head: { ref: 'feature/GitFlowBranch' } } } }
     let warn = jest.fn()
     pr.gitFlow({ danger, warn })

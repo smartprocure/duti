@@ -1,0 +1,17 @@
+{
+  "extends": "smartprocure",
+  "plugins": ["smartprocure"],
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "settings": {
+    "lodash": {
+      "pragma": "_"
+    }
+  }
+}

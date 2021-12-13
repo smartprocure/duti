@@ -1,3 +1,5 @@
+/* eslint-disable lodash-fp/use-fp */
+let _ = require('lodash')
 let duties = require('./duties')
 
-module.exports = Object.assign({}, duties)
+module.exports = _.assign({}, duties)

@@ -1,3 +1,12 @@
+## 1.0.0
+
+* Update each dev dependency to latest version and pin.
+* Update lodash and futil dependencies to latest version and pin.
+* Fix/Disable lint errors and warnings.
+* Drop the use of prettier in favor of eslint.
+* Switch from CircleCI to github actions for CI/CD.
+* Extract eslint config from package.json into `.eslintrc`
+
 ## 0.15.3
 * Update all mentions of `futil-js` to `futil`
 
