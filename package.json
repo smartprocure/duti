@@ -39,8 +39,8 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "cosmiconfig": "^2.2.2",
-    "futil": "^1.54.0",
-    "lodash": "^4.17.11",
+    "futil": "^1.76.3",
+    "lodash": "^4.17.21",
     "pkg-up": "^2.0.0",
     "strip-ansi": "^4.0.0",
     "underscore.string": "^3.3.4"
