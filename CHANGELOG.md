@@ -1,3 +1,6 @@
+## 0.15.4
+* Update the peer dependency to be more permissive
+
 ## 0.15.3
 * Update all mentions of `futil-js` to `futil`
 
